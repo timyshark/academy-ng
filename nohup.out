@@ -79,3 +79,61 @@ chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
 Date: 2020-03-14T04:30:56.110Z - Hash: c500ad4e18fde2143920 - Time: 10359ms
 ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
 : Compiled successfully.
+
+chunk {main} main.js, main.js.map (main) 15.8 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 140 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 9.7 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
+Date: 2020-03-14T04:55:16.428Z - Hash: 8c3b4aca905239e835b6 - Time: 10862ms
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+: Compiled successfully.
+
+chunk {main} main.js, main.js.map (main) 19.5 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 140 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 9.7 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
+Date: 2020-03-14T04:57:29.049Z - Hash: b495223762d436818f38 - Time: 10165ms
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+: Compiled successfully.
+
+chunk {main} main.js, main.js.map (main) 19.5 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 140 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 10.1 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
+Date: 2020-03-14T05:00:58.128Z - Hash: 2d4a47b729ad2bb9b786 - Time: 10576ms
+
+ERROR in multi ./https:/stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css ./src/styles.css
+Module not found: Error: Can't resolve '/u01/projects/ng-php-mysql/https:/stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' in '/u01/projects/ng-php-mysql'
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+chunk {main} main.js, main.js.map (main) 19.5 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 140 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 10 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
+Date: 2020-03-14T05:10:22.194Z - Hash: eaa6e34cfc462527d819 - Time: 10693ms
+
+ERROR in multi ../node_modules/bootstrap/dist/css/bootstrap.min.css ./src/styles.css
+Module not found: Error: Can't resolve '/u01/projects/node_modules/bootstrap/dist/css/bootstrap.min.css' in '/u01/projects/ng-php-mysql'
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+chunk {main} main.js, main.js.map (main) 19.5 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 140 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 9.7 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
+Date: 2020-03-14T05:14:41.269Z - Hash: b495223762d436818f38 - Time: 10508ms
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+: Compiled successfully.
+
+chunk {main} main.js, main.js.map (main) 19.5 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 140 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 663 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
+Date: 2020-03-14T05:16:23.123Z - Hash: 21eafb64310f5d5c9cc5 - Time: 11101ms
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+: Compiled successfully.
