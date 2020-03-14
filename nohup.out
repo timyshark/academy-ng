@@ -13,3 +13,69 @@ Date: 2020-03-14T01:23:31.333Z - Hash: 4f986b1842493f0ae25c
 chunk {main} main.js, main.js.map (main) 61.5 kB [initial] [rendered]
 Time: 1201ms
 : Compiled successfully.
+
+chunk {main} main.js, main.js.map (main) 1.99 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 672 bytes [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 10 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 339 kB [initial] [rendered]
+Date: 2020-03-14T03:38:32.828Z - Hash: 3cbd840ab0c895daa05a - Time: 6592ms
+
+ERROR in src/app/students/list-students.component.html:3:31 - error TS2551: Property 'student' does not exist on type 'ListStudentsComponent'. Did you mean 'students'?
+
+3     <h3 class="panel-title">{{student.fname}}</h3>
+                                ~~~~~~~
+
+  src/app/students/list-students.component.ts:6:16
+    6   templateUrl: './list-students.component.html',
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component ListStudentsComponent.
+src/app/students/list-students.component.html:9:27 - error TS2551: Property 'student' does not exist on type 'ListStudentsComponent'. Did you mean 'students'?
+
+9               <img [src]="student.picturePath" />
+                            ~~~~~~~
+
+  src/app/students/list-students.component.ts:6:16
+    6   templateUrl: './list-students.component.html',
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component ListStudentsComponent.
+src/app/students/list-students.component.html:17:29 - error TS2551: Property 'student' does not exist on type 'ListStudentsComponent'. Did you mean 'students'?
+
+17                         : {{student.lName}}
+                               ~~~~~~~
+
+  src/app/students/list-students.component.ts:6:16
+    6   templateUrl: './list-students.component.html',
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component ListStudentsComponent.
+src/app/students/list-students.component.html:25:29 - error TS2551: Property 'student' does not exist on type 'ListStudentsComponent'. Did you mean 'students'?
+
+25                         : {{student.sEmail}}
+                               ~~~~~~~
+
+  src/app/students/list-students.component.ts:6:16
+    6   templateUrl: './list-students.component.html',
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component ListStudentsComponent.
+
+ERROR in multi ../node_modules/bootstrap/dist/css/bootstrap.min.css ./src/styles.css
+Module not found: Error: Can't resolve '/u01/projects/node_modules/bootstrap/dist/css/bootstrap.min.css' in '/u01/projects/ng-php-mysql'
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+chunk {main} main.js, main.js.map (main) 15.8 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 140 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 9.7 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
+Date: 2020-03-14T04:16:54.245Z - Hash: d0168dd37be7e81056dd - Time: 10411ms
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+: Compiled successfully.
+
+chunk {main} main.js, main.js.map (main) 15.8 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 140 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.15 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 9.7 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
+Date: 2020-03-14T04:30:56.110Z - Hash: c500ad4e18fde2143920 - Time: 10359ms
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+: Compiled successfully.
