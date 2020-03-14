@@ -3,5 +3,6 @@ export class Student {
     fName: string;
     lName: string;
     sEmail: string;
+    sGender: string;
     picturePath: string
 }

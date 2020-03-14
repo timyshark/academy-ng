@@ -12,19 +12,25 @@ export class ListStudentsComponent implements OnInit {
       fName: 'Mark',
       lName: 'Andria',
       sEmail: 'mark@andria.com',
-      picturePath: 'assets/images/mark.png'
+      picturePath: 'assets/images/mark.png',
+      isActive: 0,
+      dob:''
     },
     { sId: 2,
       fName: 'John',
       lName: 'Flamingo',
       sEmail: 'john@flamingo.com',
-      picturePath: 'assets/images/john.png'
-    },
+      picturePath: 'assets/images/john.png',
+      isActive: 0,
+      dob:''
+   },
     { sId: 3,
       fName: 'Mary',
       lName: 'Casandar',
       sEmail: 'mary@casandra.com',
-      picturePath: 'assets/images/mary.png'
+      picturePath: 'assets/images/mary.png',
+      isActive: 0,
+      dob:''
     }
   ];
   constructor() { }

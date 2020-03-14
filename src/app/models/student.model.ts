@@ -4,4 +4,6 @@ export class Student {
     lName : string;
     sEmail? : string;
     picturePath?: string;
+    isActive: number;
+    dob: string;
 }

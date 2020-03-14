@@ -1,0 +1,76 @@
+<form #studentForm="ngForm" (ngSubmit)="saveStudent(studentForm)">
+    <div class="panel panel-primary" >
+        <div class="panel-heading">
+            <h3 class="panel-title">Create Student</h3>
+        </div>
+    <div class="panel-body">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" name="fullName" [(ngModel)]="frmFullName" type="text" class="form-control">
+       </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email"  [(ngModel)]="frmEmail" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="form-control">
+                <label class="radio-inline" >
+                    <input type="radio" value="male" name="gender" [(ngModel)]="frmGender">
+                    Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="female" name="gender" [(ngModel)]="frmGender">
+                    Female
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-control">
+                <label class="checkbox-inline" >
+                    <input type="checkbox"  name="isActive" [(ngModel)]="frmIsActive" >
+                    Active?
+                </label>           
+            </div>
+        </div>
+        <div class="form-group">
+                <label for="school" >
+                    School
+                </label>       
+                <select id="school" name="school" [(ngModel)]="frmSchool" class="form-control">
+                    <option *ngFor="let sch of schools" [value]="sch.schoolCode">
+                        {{sch.schoolName}}
+                    </option>
+                 </select>    
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label for="dob">Date of Birth</label>
+                <input id="dob" name="dob"  [(ngModel)]="frmDOB" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" 
+                type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="picturePath">Full Name</label>
+            <input id="picturePath" name="picturePath" [(ngModel)]="frmPicturePath" type="text" class="form-control">
+         </div>
+         <div class="form-group">
+             <button (click)="togglePhotoPreview()" class="btn btn-primary" type="button" >
+                 {{!previewPhoto? "Show":"Hide"}} Picture
+            </button>
+         </div>
+         <div class="form-group">
+            <img [src]="frmPicturePath" height="200" width="200" *ngIf="previewPhoto"/>
+
+         </div>
+   
+    </div>
+    <div class="panel-footer">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+
+    
+</div>
+
+</form>
+New student record: {{studentForm.value | json}}
