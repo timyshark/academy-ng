@@ -12,6 +12,8 @@ import { ListStudentsComponent } from './students/list-students.component';
 import { CreateStudentComponent } from './students/create-student.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UpdateStudentComponent } from './students/update-student.component';
+import { SchoolValidator } from './validators/school.validator';
+import { ConfirmPasswordValidator } from './validators/password-confirm.validator';
 
 const appRoutes:Routes =[
   {path:'list', component:ListStudentsComponent},
@@ -24,7 +26,9 @@ const appRoutes:Routes =[
     AppComponent,
     ListStudentsComponent,
     CreateStudentComponent,
-    UpdateStudentComponent
+    UpdateStudentComponent,
+    SchoolValidator,
+    ConfirmPasswordValidator
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,7 @@ const appRoutes:Routes =[
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
-  ],
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })

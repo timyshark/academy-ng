@@ -1,9 +1,10 @@
 
 <!--
+  This tutorial uses bootstrap@3, need to work on bootstrap v4 Classes do not work on bootstrap v4
   1. create the project $ng new proj
-  2. npm install bootstrap
+  2. npm install bootstrap@3
   3. npm install ngx-bootstrap
-  2. import bootstrap styles : check styles.css
+  2. import bootstrap styles : check styles.css or angular.json styles and scripts section
   2. create the model student.ts: new text file in models folder
   3. create list students component: $ng g c students/list-students --skipTests=true --flat=true
   5. pupulate sample data in list-students.ts file
@@ -19,7 +20,15 @@
   6. use bsDatePicker from ngx-bootstrap , check website for docs, and how to configure
 -------------------------------------------------------------------------------
   
+ Form Validation:
+~~~~~~~~~~~~~~~~
+   Custom Validation:
+   1. declare new CustomValidation Class : /validators/student.validator.ts
+   2. implement validate(control: AbstractControl):  method (Learn about it)
+   3. import and load the class in app.module.ts @NgModule section
+   4. use the Validator selector in html tags
 
+   
 -->
 <!doctype html>
 <html lang="en">

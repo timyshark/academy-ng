@@ -13,24 +13,30 @@ export class ListStudentsComponent implements OnInit {
       lName: 'Andria',
       sEmail: 'mark@andria.com',
       picturePath: 'assets/images/mark.png',
-      isActive: 0,
-      dob:''
+      isActive: true,
+      dob:'',
+      gender:'M',
+      school:'UBC'
     },
     { sId: 2,
       fName: 'John',
       lName: 'Flamingo',
       sEmail: 'john@flamingo.com',
       picturePath: 'assets/images/john.png',
-      isActive: 0,
-      dob:''
-   },
+      isActive: true,
+      dob:'',
+      gender:'M',
+      school:'SFU'
+    },
     { sId: 3,
       fName: 'Mary',
       lName: 'Casandar',
       sEmail: 'mary@casandra.com',
       picturePath: 'assets/images/mary.png',
-      isActive: 0,
-      dob:''
+      isActive: false,
+      dob:'',
+      gender:'F',
+      school:'UBC'
     }
   ];
   constructor() { }
