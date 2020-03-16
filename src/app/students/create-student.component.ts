@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { School } from '../models/school.model';
+import { Student} from '../models/student.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
@@ -9,14 +10,18 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   styleUrls: ['./create-student.component.css']
 })
 export class CreateStudentComponent implements OnInit {
-  frmFullName :string;
-  frmEmail:string;
-  frmGender:string;
-  frmIsActive:boolean;
-  frmSchool:string;
-  frmDOB:string;
-  frmPicturePath:string;
-  previewPhoto:boolean = false;
+   previewPhoto:boolean = false;
+
+  student: Student = {
+    sId:null,
+    fName: null,
+    lName: null,
+    sEmail:null,
+    isActive:null,
+    dob:null,
+    gender: null,
+    school: null
+  }
 
   colorTheme = 'theme-dark-blue';
   bsConfig: Partial<BsDatepickerConfig>;
@@ -38,8 +43,8 @@ export class CreateStudentComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  saveStudent(stdForm: NgForm) :void {
-    console.log(stdForm);
+  saveStudent(newStudent: Student) :void {
+    console.log(newStudent);
 
   }
   togglePhotoPreview() {

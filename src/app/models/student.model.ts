@@ -3,7 +3,11 @@ export class Student {
     fName : string;
     lName : string;
     sEmail? : string;
+    gender: string;
     picturePath?: string;
-    isActive: number;
+    isActive: boolean;
     dob: string;
+    school: string;
+    password: string;
+    confirmPassword:string;
 }
