@@ -8,6 +8,6 @@ export class Student {
     isActive: boolean;
     dob: string;
     school: string;
-    password: string;
-    confirmPassword:string;
+    password?: string;
+    confirmPassword?:string;
 }
