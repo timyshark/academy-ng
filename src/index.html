@@ -33,6 +33,18 @@ Service:
 1. create a service.ts file 
 2. register service in app.module.ts 
 3. call the service in component.ts class in ngOnInit()
+
+Form Navigation:
+~~~~~~~~~~~~~~~~
+ Child and parent between List and Display student
+
+Form Navigation Guarding:
+1. Creating navigation guard class createStudentCanDeactivateGuardService = ng g c ....
+2. Implement the canDeactivate method
+3. in app.module.ts import the module, add to providers, add to route as canDeactivate
+4. Note: won't work if new address on address bar internal or external
+
+
 -->
 <!doctype html>
 <html lang="en">

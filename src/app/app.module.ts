@@ -16,12 +16,18 @@ import { SchoolValidator } from './validators/school.validator';
 import { ConfirmPasswordValidator } from './validators/password-confirm.validator';
 import { StudentService } from './students/student.service';
 import { DisplayStudentComponent } from './students/display-student.component';
+import { createStudentCanDeactivateGuardService } from './students/create-student-can-deactivate-guard.service';
+import { StudentDetailsComponent } from './students/student-details.component';
 
 const appRoutes:Routes =[
-  {path:'list', component:ListStudentsComponent},
-  {path:'create', component:CreateStudentComponent},
+  {path:'students', component:ListStudentsComponent},
+  {path:'students/:sId', component:StudentDetailsComponent},
+  {path:'create', 
+     component:CreateStudentComponent,
+     canDeactivate:[createStudentCanDeactivateGuardService]
+    },
   {path:'update', component:UpdateStudentComponent},
-  {path:'', redirectTo:'/list', pathMatch: 'full'}
+  {path:'', redirectTo:'/students', pathMatch: 'full'}
 ];
 @NgModule({
   declarations: [
@@ -31,7 +37,9 @@ const appRoutes:Routes =[
     UpdateStudentComponent,
     SchoolValidator,
     ConfirmPasswordValidator,
-    DisplayStudentComponent
+    DisplayStudentComponent,
+    StudentDetailsComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -42,7 +50,7 @@ const appRoutes:Routes =[
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
    ],
-  providers: [StudentService],
+  providers: [StudentService,createStudentCanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

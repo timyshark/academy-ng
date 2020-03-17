@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { School } from '../models/school.model';
 import { Student} from '../models/student.model';
@@ -12,13 +12,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./create-student.component.css']
 })
 export class CreateStudentComponent implements OnInit {
+//bring the form from html 
+   @ViewChild('studentForm') public createStudentForm: NgForm;
    previewPhoto:boolean = false;
 
   student: Student = {
     sId:null,
     fName: null,
     lName: null,
-    sEmail:null,
+    sEmail:'test@test.com',
     isActive:null,
     dob:null,
     gender: null,
@@ -46,10 +48,17 @@ export class CreateStudentComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  saveStudent(std : Student) :void {
+  saveStudent() :void {
     console.log(this.student);
-    this._studentService.registerStudent(this.student);
-    this._router.navigate(['list']);
+    const newStudent: Student = Object.assign({},this.student);
+    this._studentService.registerStudent(newStudent);
+    //reset before routing away need to define stdForm as parameter
+    //stdForm.reset();
+    //or use the decorated form
+
+    this.createStudentForm.reset();
+    
+    this._router.navigate(['students']);
 
   }
   togglePhotoPreview() {

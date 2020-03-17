@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Student } from '../models/student.model';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-display-student',
@@ -10,6 +11,7 @@ export class DisplayStudentComponent implements OnInit {
   //private _student: Student;
   //private _stdId: number;
   @Input() student:Student;
+   activeStudentId: number;
   //@Output() notify : EventEmitter<Student> = new EventEmitter<Student>();
   /*
   @Input() 
@@ -30,7 +32,7 @@ export class DisplayStudentComponent implements OnInit {
     return this._student;
   }
   */
-  constructor() { }
+  constructor(private _aroute: ActivatedRoute ) { }
 
 
 /*
@@ -49,6 +51,7 @@ export class DisplayStudentComponent implements OnInit {
   }
 */
   ngOnInit() {
+    this.activeStudentId = +this._aroute.snapshot.paramMap.get('sId');
   }
   /*
   handleClick(){

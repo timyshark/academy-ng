@@ -1,0 +1,59 @@
+<div class="panel panel-primary" >
+    <div class="panel-heading">
+        <h3 class="panel-title">{{student.fName}}</h3>
+    </div>
+    <div class="panel-body">
+        <div class="col-xs-10">
+            <div class="row vertical-align">
+                <div class="col-xs-4">
+                <img class="imageProfile" [src]="student.picturePath" />
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Full Name
+                        </div>
+                        <div class="col-xs-6">
+                            : {{student.fName}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Email Address
+                        </div>
+                        <div class="col-xs-6">
+                            : {{student.sEmail}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            School Name
+                        </div>
+                        <div class="col-xs-6" [ngSwitch]="student.school">
+                            : {{student.school}}
+                            <span *ngSwitchCase="1">University of British Columbia</span>
+                            <span *ngSwitchCase="1">BCIT</span>
+                            <span *ngSwitchCase="2">Simon Fraser University</span>
+                            <span *ngSwitchDefault>UnKnown</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Active Status
+                        </div>
+                        <div class="col-xs-4">
+                            : {{student.isActive}}
+                        </div>
+        
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-primary" routerLink="/list">Bstudentsack to list --link--</a>                       
+        <a class="btn btn-primary" [routerLink]='["/students",{sId:student.sId, sname: student.fName}]'>Back to list --link--</a>                       
+        <button name="back" class="btn btn-primary" (click)="goBack()">Back --btn--</button>
+    </div>
+  </div>

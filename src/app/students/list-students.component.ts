@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../models/student.model';
 import { StudentService } from './student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-students',
@@ -14,7 +15,9 @@ export class ListStudentsComponent implements OnInit {
 
   
   //private currentStudentNdx =1;
-  constructor(private _studentService : StudentService) { }
+  constructor(private _studentService : StudentService,private _router :Router) { 
+    
+  }
 
   ngOnInit() {
     this.studentsList = this._studentService.getStudentsList();
@@ -32,4 +35,7 @@ export class ListStudentsComponent implements OnInit {
   this.dataFromChild=eventData;
  }
  */
+onClick(stdId: number){
+ this._router.navigate(["/students/" + stdId]);
+}
 }

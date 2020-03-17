@@ -21,5 +21,7 @@
 
 </h1>
 <div *ngFor="let std of studentsList">
+    <div (click)="onClick(std.sId)" class="pointerCursor">
         <app-display-student [student]="std" ></app-display-student>
+    </div>
 </div>

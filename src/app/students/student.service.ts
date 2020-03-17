@@ -41,4 +41,12 @@ export class StudentService {
       registerStudent(newStudent: Student){
           this.studentsList.push(newStudent);
       }
+      getStudentById(sId : number) : Student{
+        // find Student who sId equivalent(type and value) to sId
+        console.log("Students in the list: " + this.studentsList.length);
+        const std = this.studentsList.find(s => s.sId === sId);
+        console.log(JSON.stringify(std));
+        return std;
+
+      }
 }
