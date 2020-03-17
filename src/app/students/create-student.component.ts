@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { School } from '../models/school.model';
 import { Student} from '../models/student.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { StudentService } from './student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-student',
@@ -31,7 +33,8 @@ export class CreateStudentComponent implements OnInit {
     { schoolCode:"UBC", schoolName:"University of British Columbia"},
     { schoolCode:"SFU", schoolName:"Simon Fraser University"}
   ];
-  constructor() { 
+  constructor(private _studentService: StudentService,
+              private _router: Router) { 
     this.bsConfig = Object.assign({}, 
       { containerClass: this.colorTheme, 
         showWeekNumbers: false,
@@ -43,8 +46,10 @@ export class CreateStudentComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  saveStudent(newStudent: Student) :void {
-    console.log(newStudent);
+  saveStudent(std : Student) :void {
+    console.log(this.student);
+    this._studentService.registerStudent(this.student);
+    this._router.navigate(['list']);
 
   }
   togglePhotoPreview() {

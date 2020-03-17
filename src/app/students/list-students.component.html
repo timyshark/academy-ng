@@ -1,32 +1,25 @@
-<div class="panel panel-primary" *ngFor="let student of students" >
-    <div class="panel-heading">
-        <h3 class="panel-title">{{student.fName}}</h3>
+<!-- <div  *ngFor="let student of studentsList" >
+    <app-display-student [student]="student"></app-display-student>
+</div>
+
+<h2>{{dataFromChild?.fName}}</h2> 
+
+
+<button (click)="nextStudent()" class="btn btn-primary">View next student</button>
+
+<app-display-student [student]="std" (notify)="handleNotify($event)" ></app-display-student>
+ <div (click)="h1RefVar.innerHTML = childComponent.student.fName + ' ' + childComponent.student.gender">
+    
+    
+    
+    <div (click)="h1RefVar.innerHTML = childComponent.getStudentNameAndGender()">
+        <app-display-student [student]="std" #childComponent></app-display-student>
     </div>
-    <div class="panel-body">
-        <div class="col-xs-10">
-            <div class="row vertical-align">
-                <div class="col-xs-4">
-                <img class="imageProfile" [src]="student.picturePath" />
-                </div>
-                <div class="col-xs-8">
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Last Name
-                        </div>
-                        <div class="col-xs-6">
-                            : {{student.lName}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Email Address
-                        </div>
-                        <div class="col-xs-6">
-                            : {{student.sEmail}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+-->
+<h1 #h1RefVar>
+
+</h1>
+<div *ngFor="let std of studentsList">
+        <app-display-student [student]="std" ></app-display-student>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../models/student.model';
+import { StudentService } from './student.service';
 
 @Component({
   selector: 'app-list-students',
@@ -7,41 +8,28 @@ import { Student } from '../models/student.model';
   styleUrls: ['./list-students.component.css']
 })
 export class ListStudentsComponent implements OnInit {
-  students : Student[] = [
-    { sId: 1,
-      fName: 'Mark',
-      lName: 'Andria',
-      sEmail: 'mark@andria.com',
-      picturePath: 'assets/images/mark.png',
-      isActive: true,
-      dob:'',
-      gender:'M',
-      school:'UBC'
-    },
-    { sId: 2,
-      fName: 'John',
-      lName: 'Flamingo',
-      sEmail: 'john@flamingo.com',
-      picturePath: 'assets/images/john.png',
-      isActive: true,
-      dob:'',
-      gender:'M',
-      school:'SFU'
-    },
-    { sId: 3,
-      fName: 'Mary',
-      lName: 'Casandar',
-      sEmail: 'mary@casandra.com',
-      picturePath: 'assets/images/mary.png',
-      isActive: false,
-      dob:'',
-      gender:'F',
-      school:'UBC'
-    }
-  ];
-  constructor() { }
+  studentsList : Student[] ;
+  //currentStudent : Student;
+  //dataFromChild : Student;
 
-  ngOnInit(): void {
+  
+  //private currentStudentNdx =1;
+  constructor(private _studentService : StudentService) { }
+
+  ngOnInit() {
+    this.studentsList = this._studentService.getStudentsList();
+  //  this.currentStudent = this.studentsList[0];
   }
 
+  /*
+  nextStudent() : void{
+    this.currentStudent = this.studentsList[this.currentStudentNdx];
+    this.currentStudentNdx = (this.currentStudentNdx + 1) % 3;
+  }
+  */
+ /*
+ handleNotify(eventData:Student) {
+  this.dataFromChild=eventData;
+ }
+ */
 }

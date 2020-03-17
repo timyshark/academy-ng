@@ -14,6 +14,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { UpdateStudentComponent } from './students/update-student.component';
 import { SchoolValidator } from './validators/school.validator';
 import { ConfirmPasswordValidator } from './validators/password-confirm.validator';
+import { StudentService } from './students/student.service';
+import { DisplayStudentComponent } from './students/display-student.component';
 
 const appRoutes:Routes =[
   {path:'list', component:ListStudentsComponent},
@@ -28,7 +30,8 @@ const appRoutes:Routes =[
     CreateStudentComponent,
     UpdateStudentComponent,
     SchoolValidator,
-    ConfirmPasswordValidator
+    ConfirmPasswordValidator,
+    DisplayStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ const appRoutes:Routes =[
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
    ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
