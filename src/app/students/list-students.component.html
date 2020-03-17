@@ -27,7 +27,7 @@
     <button type="button" class="btn btn-primary" (click)="changeStudentName()"  >Change Name</button>
    </div>
       
-<div *ngFor="let std of studentsList | studentFilter:searchTerm" (mousemove)="onMouseMove()">
+<div *ngFor="let std of filteredStudents " >
     <div (click)="onClick(std.sId)" class="pointerCursor">
         <app-display-student [student]="std" ></app-display-student>
     </div>

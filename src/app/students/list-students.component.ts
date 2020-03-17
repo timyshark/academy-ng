@@ -10,7 +10,18 @@ import { Router } from '@angular/router';
 })
 export class ListStudentsComponent implements OnInit {
   studentsList : Student[] ;
-  searchTerm : string;
+
+  
+  private _searchTerm : string;
+  set searchTerm(v : string){
+    this._searchTerm=v;
+    this.filteredStudents = this.filterStudents(v);
+  }
+  get searchTerm(): string {
+    return this._searchTerm;
+  }
+  filteredStudents : Student[];
+
   //currentStudent : Student;
   //dataFromChild : Student;
 
@@ -19,10 +30,14 @@ export class ListStudentsComponent implements OnInit {
   constructor(private _studentService : StudentService,private _router :Router) { 
     
   }
-
+  filterStudents(searchTerm : string) : Student[]{
+    return this.studentsList.filter(student =>
+      student.fName.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1) ;
+  }
   ngOnInit() {
     this.studentsList = this._studentService.getStudentsList();
   //  this.currentStudent = this.studentsList[0];
+    this.filteredStudents = this.studentsList;
   }
 
   /*
@@ -40,11 +55,13 @@ onClick(stdId: number){
  this._router.navigate(["/students/" + stdId]);
 }
 onMouseMove(){
-  
+
 }
 changeStudentName(){
   //pure change
  this.studentsList[0].fName = 'Jordan';
+ //Force refreshing
+ this.filteredStudents = this.filterStudents(this.searchTerm);
 
  //Impure change
 //  const newStudentsList : Student[] = Object.assign([],this.studentsList);
