@@ -53,7 +53,8 @@
     </div>
     <div class="panel-footer">
         <a class="btn btn-primary" routerLink="/list">Bstudentsack to list --link--</a>                       
-        <a class="btn btn-primary" [routerLink]='["/students",{sId:student.sId, sname: student.fName}]'>Back to list --link--</a>                       
+        <a class="btn btn-primary" [routerLink]='["/list",{sId:student.sId, sname: student.fName}]'>Back to list --link--</a>                       
         <button name="back" class="btn btn-primary" (click)="goBack()">Back --btn--</button>
+        <button name="next" class="btn btn-primary pull-right" (click)="goNext()">Next</button>
     </div>
   </div>

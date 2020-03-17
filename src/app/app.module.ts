@@ -21,14 +21,14 @@ import { StudentDetailsComponent } from './students/student-details.component';
 import { StudentFilterPipe } from './students/student-filter.pipe';
 
 const appRoutes:Routes =[
-  {path:'students', component:ListStudentsComponent},
+  {path:'list', component:ListStudentsComponent},
   {path:'students/:sId', component:StudentDetailsComponent},
   {path:'create', 
      component:CreateStudentComponent,
      canDeactivate:[createStudentCanDeactivateGuardService]
     },
   {path:'update', component:UpdateStudentComponent},
-  {path:'', redirectTo:'/students', pathMatch: 'full'}
+  {path:'', redirectTo:'/list', pathMatch: 'full'}
 ];
 @NgModule({
   declarations: [

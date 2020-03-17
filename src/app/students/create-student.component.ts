@@ -58,7 +58,7 @@ export class CreateStudentComponent implements OnInit {
 
     this.createStudentForm.reset();
     
-    this._router.navigate(['students']);
+    this._router.navigate(['list']);
 
   }
   togglePhotoPreview() {
