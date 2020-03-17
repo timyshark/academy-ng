@@ -44,6 +44,12 @@ Form Navigation Guarding:
 3. in app.module.ts import the module, add to providers, add to route as canDeactivate
 4. Note: won't work if new address on address bar internal or external
 
+Search Filtering:
+(Pipe not recommended)
+1. create search html block list-student -- bind it with ListComponent "define search term"
+2. create search pipe filter class ,Annotate @Pipe, Register app.Module.ts in declaration section
+3. Pure change doesn't re-evaluate the filter pipe, Impure change do re-evaluate
+
 
 -->
 <!doctype html>

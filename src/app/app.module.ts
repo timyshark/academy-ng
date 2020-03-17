@@ -18,6 +18,7 @@ import { StudentService } from './students/student.service';
 import { DisplayStudentComponent } from './students/display-student.component';
 import { createStudentCanDeactivateGuardService } from './students/create-student-can-deactivate-guard.service';
 import { StudentDetailsComponent } from './students/student-details.component';
+import { StudentFilterPipe } from './students/student-filter.pipe';
 
 const appRoutes:Routes =[
   {path:'students', component:ListStudentsComponent},
@@ -38,7 +39,8 @@ const appRoutes:Routes =[
     SchoolValidator,
     ConfirmPasswordValidator,
     DisplayStudentComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    StudentFilterPipe
     
   ],
   imports: [

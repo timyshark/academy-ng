@@ -7,7 +7,7 @@
 <!-- Add the class.panel-success if condition is true-->
 <div class="panel panel-primary" [class.panel-success] = "activeStudentId===student.sId" >
 <div class="panel-heading">
-    <h3 class="panel-title">{{student.fName}}</h3>
+    <h3 class="panel-title">{{student.fName | uppercase}}</h3>
 </div>
 <div class="panel-body">
     <div class="col-xs-10">
