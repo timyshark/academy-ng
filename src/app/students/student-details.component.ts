@@ -32,7 +32,8 @@ export class StudentDetailsComponent implements OnInit {
   }
   goNext(){
     this._sId =this._sId % 3 + 1;  
-    this._router.navigate(["/students",this._sId]);
+    this._router.navigate(["/students",this._sId], 
+    { queryParamsHandling:'preserve'});
   }
 
 }

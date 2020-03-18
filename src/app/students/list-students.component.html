@@ -31,4 +31,9 @@
     <div (click)="onClick(std.sId)" class="pointerCursor">
         <app-display-student [student]="std" ></app-display-student>
     </div>
+            <!-- onClick or use link -->
+    <a [routerLink] = "['/students', std.sId]"
+       [queryParams]="{ 'searchTerm': 'J', 'testParam' : 'hcLinkTestValue'}">
+      Details
+    </a>
 </div>

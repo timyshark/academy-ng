@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../models/student.model';
 import { StudentService } from './student.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-students',
@@ -27,7 +27,9 @@ export class ListStudentsComponent implements OnInit {
 
   
   //private currentStudentNdx =1;
-  constructor(private _studentService : StudentService,private _router :Router) { 
+  constructor(private _studentService : StudentService,
+              private _router :Router,
+              private _aroute : ActivatedRoute) { 
     
   }
   filterStudents(searchTerm : string) : Student[]{
@@ -37,7 +39,23 @@ export class ListStudentsComponent implements OnInit {
   ngOnInit() {
     this.studentsList = this._studentService.getStudentsList();
   //  this.currentStudent = this.studentsList[0];
-    this.filteredStudents = this.studentsList;
+  
+    //Inspecting parameters (after ?)
+    console.log(this._aroute.snapshot.queryParamMap.has('searchTerm')); //returns true:found, false:not-found
+    console.log(this._aroute.snapshot.queryParamMap.get('searchTerm')); //return string value of key 'searchTerm'
+    console.log(this._aroute.snapshot.queryParamMap.getAll('searchTerm')); //return array of string values ['John','newValue','testValue'...etc]
+    console.log(this._aroute.snapshot.queryParamMap.keys); //is array of keys as strings ['searchTerm','newParam','testParam'...etc]
+
+    // to use optional parameter (after ;) use paramMap instead of queryParamMap ex
+    console.log(this._aroute.snapshot.paramMap.keys); //is array of keys as strings of parameters after : , ex ['sId',...etc]
+
+    if (this._aroute.snapshot.queryParamMap.has('searchTerm')) {
+      this.searchTerm = this._aroute.snapshot.queryParamMap.get('searchTerm'); //automatically filters the students in the property setter
+    } else {
+      this.filteredStudents = this.studentsList;
+
+    }
+
   }
 
   /*
@@ -52,7 +70,8 @@ export class ListStudentsComponent implements OnInit {
  }
  */
 onClick(stdId: number){
- this._router.navigate(["/students/" + stdId]);
+ this._router.navigate(["/students/" + stdId],
+ {queryParams : {'searchTerm' : this.searchTerm, 'testParam': 'hcTestValue'}});
 }
 onMouseMove(){
 
@@ -60,7 +79,7 @@ onMouseMove(){
 changeStudentName(){
   //pure change
  this.studentsList[0].fName = 'Jordan';
- //Force refreshing
+ //Force refreshing by component
  this.filteredStudents = this.filterStudents(this.searchTerm);
 
  //Impure change
