@@ -19,9 +19,10 @@ import { DisplayStudentComponent } from './students/display-student.component';
 import { createStudentCanDeactivateGuardService } from './students/create-student-can-deactivate-guard.service';
 import { StudentDetailsComponent } from './students/student-details.component';
 import { StudentFilterPipe } from './students/student-filter.pipe';
+import { StudentListResolverService } from './students/student-list-resolver.service';
 
 const appRoutes:Routes =[
-  {path:'list', component:ListStudentsComponent},
+  {path:'list', component:ListStudentsComponent, resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor
   {path:'students/:sId', component:StudentDetailsComponent},
   {path:'create', 
      component:CreateStudentComponent,
@@ -50,9 +51,12 @@ const appRoutes:Routes =[
     AppRoutingModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, {enableTracing:true})
    ],
-  providers: [StudentService,createStudentCanDeactivateGuardService],
+  providers: [StudentService,
+    createStudentCanDeactivateGuardService,
+    StudentListResolverService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

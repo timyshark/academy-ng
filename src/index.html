@@ -61,6 +61,18 @@ Observables ()
 Observables provide support for passing messages between publishers and subscribers in your application
 subscribe : asynchronous execution of a function, hint use anonymous block {} to include more lines of code or just a method
 
+Resolver:
+~~~~~~~~~~
+1. create reslover class StudentListResolverService as a service
+2. Register it in providers section app.module.ts
+3. Add resolver to the route in app.module.ts
+4. read prefetched data from activated route
+the resolver holds the link before navigation to fetch the data (including delay) before it routes
+
+1. enable tracing to true in app.module.ts RouterModule.forRoot(appRoutes, {enableTracing:true}) method, allows loging at the browser js console 
+2. Register Nav start, Nav End Events in app.component.ts 
+3. add spinner css style app.component.css , hint: https://loading.io/css to load more spinner examples
+
 
 
 -->

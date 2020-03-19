@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../models/student.model';
-import { StudentService } from './student.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -27,11 +26,19 @@ export class ListStudentsComponent implements OnInit {
 
   
   //private currentStudentNdx =1;
-  constructor(private _studentService : StudentService,
-              private _router :Router,
-              private _aroute : ActivatedRoute) { 
-    
-  }
+  // constructor(private _studentService : StudentService,
+  //             private _router :Router,
+  //             private _aroute : ActivatedRoute) { 
+  // }
+
+  //using Resolver 
+  constructor(
+    private _router :Router,
+    private _aroute : ActivatedRoute) { 
+    this.initStudentsList(this._aroute.snapshot.data['studentList']);  //Same data name used the key in the route section of app.module.ts 
+}
+
+
   filterStudents(searchTerm : string) : Student[]{
     return this.studentsList.filter(student =>
       student.fName.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1) ;
@@ -50,19 +57,17 @@ export class ListStudentsComponent implements OnInit {
     // using Observable
     // will subscribe : meaning will wait until it comes back, at that time will execute (stdList=>...) Asynchronous
     // if the getStudentsList was (delayed) then the list would be empty
-    this._studentService.getStudentsList().subscribe(
-      (stdList) => {  //write anonymous block
-        this.initStudentsList(stdList);
-  
-      }
-    );
-
+    // this._studentService.getStudentsList().subscribe(
+    //   (stdList) => {  //write anonymous block
+    //     this.initStudentsList(stdList);
+    //  }
+    // );
 
     // without observable
     // this.studentsList = this._studentService.getStudentsList();
   
-  // Direct initialization
-  //  this.currentStudent = this.studentsList[0];
+   // Direct initialization
+   //  this.currentStudent = this.studentsList[0];
   
     //Inspecting parameters (after ?)
     // console.log(this._aroute.snapshot.queryParamMap.has('searchTerm')); //returns true:found, false:not-found
@@ -71,17 +76,9 @@ export class ListStudentsComponent implements OnInit {
     // console.log(this._aroute.snapshot.queryParamMap.keys); //is array of keys as strings ['searchTerm','newParam','testParam'...etc]
 
     // to use optional parameter (after ;) use paramMap instead of queryParamMap ex
-    // console.log(this._aroute.snapshot.paramMap.keys); //is array of keys as strings of parameters after : , ex ['sId',...etc]
-
-    
+    // console.log(this._aroute.snapshot.paramMap.keys); //is array of keys as strings of parameters after : , ex ['sId',...etc]    
   }
 
-  /*
-  nextStudent() : void{
-    this.currentStudent = this.studentsList[this.currentStudentNdx];
-    this.currentStudentNdx = (this.currentStudentNdx + 1) % 3;
-  }
-  */
  /*
  handleNotify(eventData:Student) {
   this.dataFromChild=eventData;
