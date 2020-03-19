@@ -10,7 +10,7 @@ export class AccordionComponent implements OnInit {
 
   @Input() hasJustViewed : boolean;
   @Input() title: string;
-  isHidden:boolean = false;
+  @Input() isHidden:boolean = false;
   constructor() { }
 
   ngOnInit(): void {

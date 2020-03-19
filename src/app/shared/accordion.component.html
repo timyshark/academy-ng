@@ -4,7 +4,9 @@
     </div>
     <!-- use [hidden] is more efficient to show/hide a division  rather than *ngIf which is good for less frequent toggelingora-->
     <div class="panel-body" [hidden]="isHidden">
-     </div>
+        <ng-content select=".prjStudentBody"></ng-content>
+    </div>
     <div class="panel-footer"  [hidden]="isHidden">
+        <ng-content select=".prjStudentFooter"></ng-content>
     </div>
     </div>

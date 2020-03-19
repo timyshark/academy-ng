@@ -15,7 +15,6 @@ export class DisplayStudentComponent implements OnInit {
    activeStudentId: number;
    @Input() searchTerm:string;
    confirmDelete : boolean = false;
-   panelHide : boolean = false;
   @Output() notify : EventEmitter<number> = new EventEmitter<number>();
   /*
   @Input() 
