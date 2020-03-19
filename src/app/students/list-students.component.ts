@@ -36,26 +36,44 @@ export class ListStudentsComponent implements OnInit {
     return this.studentsList.filter(student =>
       student.fName.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1) ;
   }
-  ngOnInit() {
-    this.studentsList = this._studentService.getStudentsList();
-  //  this.currentStudent = this.studentsList[0];
-  
-    //Inspecting parameters (after ?)
-    console.log(this._aroute.snapshot.queryParamMap.has('searchTerm')); //returns true:found, false:not-found
-    console.log(this._aroute.snapshot.queryParamMap.get('searchTerm')); //return string value of key 'searchTerm'
-    console.log(this._aroute.snapshot.queryParamMap.getAll('searchTerm')); //return array of string values ['John','newValue','testValue'...etc]
-    console.log(this._aroute.snapshot.queryParamMap.keys); //is array of keys as strings ['searchTerm','newParam','testParam'...etc]
-
-    // to use optional parameter (after ;) use paramMap instead of queryParamMap ex
-    console.log(this._aroute.snapshot.paramMap.keys); //is array of keys as strings of parameters after : , ex ['sId',...etc]
-
+  initStudentsList(stdList : Student[]) {
+    this.studentsList = stdList;
+    // console.log("Subscribe :" + new Date().toTimeString());
     if (this._aroute.snapshot.queryParamMap.has('searchTerm')) {
       this.searchTerm = this._aroute.snapshot.queryParamMap.get('searchTerm'); //automatically filters the students in the property setter
     } else {
       this.filteredStudents = this.studentsList;
-
+      // console.log("Else Block :" + new Date().toTimeString());
     }
+  }
+  ngOnInit() {
+    // using Observable
+    // will subscribe : meaning will wait until it comes back, at that time will execute (stdList=>...) Asynchronous
+    // if the getStudentsList was (delayed) then the list would be empty
+    this._studentService.getStudentsList().subscribe(
+      (stdList) => {  //write anonymous block
+        this.initStudentsList(stdList);
+  
+      }
+    );
 
+
+    // without observable
+    // this.studentsList = this._studentService.getStudentsList();
+  
+  // Direct initialization
+  //  this.currentStudent = this.studentsList[0];
+  
+    //Inspecting parameters (after ?)
+    // console.log(this._aroute.snapshot.queryParamMap.has('searchTerm')); //returns true:found, false:not-found
+    // console.log(this._aroute.snapshot.queryParamMap.get('searchTerm')); //return string value of key 'searchTerm'
+    // console.log(this._aroute.snapshot.queryParamMap.getAll('searchTerm')); //return array of string values ['John','newValue','testValue'...etc]
+    // console.log(this._aroute.snapshot.queryParamMap.keys); //is array of keys as strings ['searchTerm','newParam','testParam'...etc]
+
+    // to use optional parameter (after ;) use paramMap instead of queryParamMap ex
+    // console.log(this._aroute.snapshot.paramMap.keys); //is array of keys as strings of parameters after : , ex ['sId',...etc]
+
+    
   }
 
   /*

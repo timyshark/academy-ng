@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Student } from '../models/student.model';
+import { Observable , of} from 'rxjs';
+import { delay } from 'rxjs/internal/operators';
 
 @Injectable()
 export class StudentService {
@@ -22,7 +24,7 @@ export class StudentService {
           isActive: true,
           dob:'',
           gender:'M',
-          school:'SFU'
+          school:'2'
         },
         { sId: 3,
           fName: 'Mary',
@@ -32,12 +34,15 @@ export class StudentService {
           isActive: false,
           dob:'',
           gender:'F',
-          school:'OTHER'
+          school:'7'
         }
       ];
-      getStudentsList(): Student[] {
-          return this.studentsList;
+      getStudentsList(): Observable<Student[]> {
+          return of(this.studentsList).pipe( delay(2000));
       }
+      // getStudentsList(): Student[] {
+      //     return this.studentsList;
+      // }
       registerStudent(newStudent: Student){
           this.studentsList.push(newStudent);
       }
