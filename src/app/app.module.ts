@@ -22,6 +22,7 @@ import { StudentFilterPipe } from './students/student-filter.pipe';
 import { StudentListResolverService } from './students/student-list-resolver.service';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { StudentDetailGuardService } from './students/student-details-guard.service';
+import { AccordionComponent } from './shared/accordion.component';
 
 const appRoutes:Routes =[
   {path:'list', component:ListStudentsComponent, resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor
@@ -29,7 +30,7 @@ const appRoutes:Routes =[
      component:StudentDetailsComponent,
      canActivate: [StudentDetailGuardService]
     },
-  {path:'create', 
+  {path:'edit/:sId', 
      component:CreateStudentComponent,
      canDeactivate:[createStudentCanDeactivateGuardService]
     },
@@ -49,7 +50,8 @@ const appRoutes:Routes =[
     DisplayStudentComponent,
     StudentDetailsComponent,
     StudentFilterPipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AccordionComponent
     
   ],
   imports: [

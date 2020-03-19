@@ -52,18 +52,11 @@
         </div>
     </div>
     <div class="panel-footer">
-        <!-- routerLink passes parameter as string-->
-        <a class="btn btn-primary" routerLink="/list" 
-            queryParamsHandling="merge" [queryParams]="{'newParams':'newValue'}">
-        List --routerLink with merge--
-        </a>     
-        <!-- [routerLink passes parameters as array of objects -->                  
+       <!-- [routerLink passes parameters as array of objects -->                  
         <a class="btn btn-primary" [routerLink]='["/list",{sId:student.sId}]'
-                                    queryParamsHandling="preserve" 
-                                    [queryParams]="{'newParams':'newValue'}" >
-        List --[routerLink] with preserve--
+                                    queryParamsHandling="preserve" >
+        List
         </a>                       
-        <button name="back" class="btn btn-primary" (click)="goBack()">Back --btn--</button>
-        <button name="next" class="btn btn-primary pull-right" (click)="goNext()">Next</button>
+         <button name="next" class="btn btn-primary pull-right" (click)="goNext()">Next</button>
     </div>
   </div>

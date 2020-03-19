@@ -14,7 +14,7 @@ export class StudentService {
           isActive: true,
           dob:'',
           gender:'M',
-          school:"1"
+          school:"UBC"
         },
         { sId: 2,
           fName: 'John',
@@ -24,7 +24,7 @@ export class StudentService {
           isActive: true,
           dob:'',
           gender:'M',
-          school:'2'
+          school:'SFU'
         },
         { sId: 3,
           fName: 'Mary',
@@ -34,7 +34,7 @@ export class StudentService {
           isActive: false,
           dob:'',
           gender:'F',
-          school:'7'
+          school:'BCIT'
         }
       ];
       getStudentsList(): Observable<Student[]> {
@@ -44,7 +44,18 @@ export class StudentService {
       //     return this.studentsList;
       // }
       registerStudent(newStudent: Student){
+        if (newStudent.sId === null){
+          // find the maximum sId in the array
+          const maxId = this.studentsList.reduce(function(s1,s2){
+            return (s1.sId > s2.sId) ? s1:s2;
+          }).sId +1;
+          newStudent.sId = maxId;
           this.studentsList.push(newStudent);
+        } else {
+          const stdIndex = this.studentsList.findIndex(
+            s => s.sId === newStudent.sId);
+          this.studentsList[stdIndex] = newStudent;
+        }
       }
       getStudentById(sId : number) : Student{
         // find Student who sId equivalent(type and value) to sId
@@ -53,5 +64,11 @@ export class StudentService {
         console.log(JSON.stringify(std));
         return std;
 
+      }
+      deleteStudentById(sId : number){
+        const sIdNDX =this.studentsList.findIndex( s => s.sId === sId);
+        if (sIdNDX !== -1){
+          this.studentsList.splice(sIdNDX,1);
+        }
       }
 }

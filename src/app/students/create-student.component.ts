@@ -4,7 +4,7 @@ import { School } from '../models/school.model';
 import { Student} from '../models/student.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { StudentService } from './student.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-student',
@@ -15,6 +15,7 @@ export class CreateStudentComponent implements OnInit {
 //bring the form from html 
    @ViewChild('studentForm') public createStudentForm: NgForm;
    previewPhoto:boolean = false;
+   panelTitle: string ="Undefined";
 
   student: Student = {
     sId:null,
@@ -36,7 +37,8 @@ export class CreateStudentComponent implements OnInit {
     { schoolCode:"SFU", schoolName:"Simon Fraser University"}
   ];
   constructor(private _studentService: StudentService,
-              private _router: Router) { 
+              private _router: Router,
+              private _aroute : ActivatedRoute) { 
     this.bsConfig = Object.assign({}, 
       { containerClass: this.colorTheme, 
         showWeekNumbers: false,
@@ -47,6 +49,34 @@ export class CreateStudentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._aroute.paramMap.subscribe(
+      parameterMap => {
+        const sId=  +parameterMap.get('sId');
+        this.getStudent(sId);
+      }
+    )
+  }
+
+  private getStudent(sId : number){
+
+  if (sId===0){
+    this.student = {
+      sId:null,
+      fName: null,
+      lName: null,
+      sEmail:'test@test.com',
+      isActive:null,
+      dob:null,
+      gender: null,
+      school: null
+    };
+    this.panelTitle = 'New Student';
+    this.createStudentForm.reset();
+  } else { //find the user from the student Service
+    //need to break the reference by instantiating a new object
+      this.student = Object.assign({},this._studentService.getStudentById(sId));
+    this.panelTitle = 'Edit Student';
+  }
   }
   saveStudent() :void {
     console.log(this.student);

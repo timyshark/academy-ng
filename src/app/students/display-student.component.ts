@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Student } from '../models/student.model';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
+import { StudentService } from './student.service';
 
 @Component({
   selector: 'app-display-student',
@@ -12,7 +13,10 @@ export class DisplayStudentComponent implements OnInit {
   //private _stdId: number;
   @Input() student:Student;
    activeStudentId: number;
-  //@Output() notify : EventEmitter<Student> = new EventEmitter<Student>();
+   @Input() searchTerm:string;
+   confirmDelete : boolean = false;
+   panelHide : boolean = false;
+  @Output() notify : EventEmitter<number> = new EventEmitter<number>();
   /*
   @Input() 
   set sId(stdId:number) {
@@ -32,7 +36,9 @@ export class DisplayStudentComponent implements OnInit {
     return this._student;
   }
   */
-  constructor(private _aroute: ActivatedRoute ) { }
+  constructor(private _aroute: ActivatedRoute,
+              private _router: Router ,
+              private _studentService: StudentService) { }
 
 
 /*
@@ -64,4 +70,16 @@ export class DisplayStudentComponent implements OnInit {
    return this.student.fName + ' ' + this.student.gender;
  }
  */
+  viewStudent(){
+    this._router.navigate(["/students/" + this.student.sId],
+    {queryParams : {'searchTerm' : this.searchTerm}});
+  }
+  deleteStudent(){
+    this._studentService.deleteStudentById(this.student.sId);
+    this.notify.emit(this.student.sId);
+
+  }
+  editStudent(){
+    this._router.navigate(["/edit/" + this.student.sId]);
+  }
 }

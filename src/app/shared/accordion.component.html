@@ -1,0 +1,12 @@
+<div class="panel panel-primary" [class.panel-success] = "hasJustViewed" >
+    <div class="panel-heading pointerCursor" (click)="isHidden=!isHidden;">
+        <h3 class="panel-title">{{title | uppercase}}</h3>
+    </div>
+    <!-- use [hidden] is more efficient to show/hide a division  rather than *ngIf which is good for less frequent toggelingora-->
+    <div class="panel-body" [hidden]="isHidden">
+         <ng-conent></ng-conent>
+     </div>
+    <div class="panel-footer"  [hidden]="isHidden">
+        <ng-conent></ng-conent>
+    </div>
+    </div>

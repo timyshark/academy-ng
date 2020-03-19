@@ -78,19 +78,27 @@ export class ListStudentsComponent implements OnInit {
     // to use optional parameter (after ;) use paramMap instead of queryParamMap ex
     // console.log(this._aroute.snapshot.paramMap.keys); //is array of keys as strings of parameters after : , ex ['sId',...etc]    
   }
-
+  onNotifyStudentDelete(deleted_sId:number){
+    if (this.searchTerm!=null && this.searchTerm!='')
+    this.searchTerm = this.searchTerm; //Call setter once again
+  }
  /*
  handleNotify(eventData:Student) {
   this.dataFromChild=eventData;
  }
  */
+
+ /*
 onClick(stdId: number){
  this._router.navigate(["/students/" + stdId],
  {queryParams : {'searchTerm' : this.searchTerm, 'testParam': 'hcTestValue'}});
 }
+
 onMouseMove(){
 
 }
+*/
+/*
 changeStudentName(){
   //pure change
  this.studentsList[0].fName = 'Jordan';
@@ -102,5 +110,6 @@ changeStudentName(){
 //  newStudentsList[0].fName = 'Jordan';
 //  this.studentsList = newStudentsList;
 }
+*/
 }
 

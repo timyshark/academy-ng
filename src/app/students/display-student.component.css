@@ -6,3 +6,10 @@
     display:flex;
     align-items:center;
 }
+button.btn {
+    width: 80px;
+    padding: 0px;
+}
+.pointerCursor {
+    cursor : pointer;
+}
