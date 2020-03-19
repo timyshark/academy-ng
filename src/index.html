@@ -73,7 +73,14 @@ the resolver holds the link before navigation to fetch the data (including delay
 2. Register Nav start, Nav End Events in app.component.ts 
 3. add spinner css style app.component.css , hint: https://loading.io/css to load more spinner examples
 
-
+Page not Found routing:
+~~~~~~~~~~~~~~~~~~~~~~~
+1. create the component $ng g c pageNotFound
+2. Add route in the app.module.ts 
+3. Generate CanActivate Guard service studentDetailsGuardService, implement the logic to detect invalid student ID in Activate method
+4. Register the guard service in app.module.ts under providers section
+5. tie the guardservice to the route path associated with StudentDetails "/students/:sId"
+6. test by addressing student/7
 
 -->
 <!doctype html>

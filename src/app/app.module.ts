@@ -20,16 +20,23 @@ import { createStudentCanDeactivateGuardService } from './students/create-studen
 import { StudentDetailsComponent } from './students/student-details.component';
 import { StudentFilterPipe } from './students/student-filter.pipe';
 import { StudentListResolverService } from './students/student-list-resolver.service';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { StudentDetailGuardService } from './students/student-details-guard.service';
 
 const appRoutes:Routes =[
   {path:'list', component:ListStudentsComponent, resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor
-  {path:'students/:sId', component:StudentDetailsComponent},
+  {path:'students/:sId', 
+     component:StudentDetailsComponent,
+     canActivate: [StudentDetailGuardService]
+    },
   {path:'create', 
      component:CreateStudentComponent,
      canDeactivate:[createStudentCanDeactivateGuardService]
     },
   {path:'update', component:UpdateStudentComponent},
+  {path:'pageNotFound', component:PageNotFoundComponent},
   {path:'', redirectTo:'/list', pathMatch: 'full'}
+
 ];
 @NgModule({
   declarations: [
@@ -41,7 +48,8 @@ const appRoutes:Routes =[
     ConfirmPasswordValidator,
     DisplayStudentComponent,
     StudentDetailsComponent,
-    StudentFilterPipe
+    StudentFilterPipe,
+    PageNotFoundComponent
     
   ],
   imports: [
@@ -51,11 +59,12 @@ const appRoutes:Routes =[
     AppRoutingModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes, {enableTracing:true})
+    // RouterModule.forRoot(appRoutes, {enableTracing:true})
+    RouterModule.forRoot(appRoutes)
    ],
   providers: [StudentService,
     createStudentCanDeactivateGuardService,
-    StudentListResolverService
+    StudentListResolverService, StudentDetailGuardService
   ],
   bootstrap: [AppComponent]
 })
