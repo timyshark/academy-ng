@@ -45,3 +45,7 @@
         <app-display-student [student]="std" [searchTerm]="searchTerm" (notify)="onNotifyStudentDelete($event)"></app-display-student>
     </div>
 </div>
+<div *ngIf="error">
+    An Error has occured :{{error}}
+    <br/>Typically should be routed to custom error page
+</div>

@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CreateStudentComponent implements OnInit {
 //bring the form from html 
-   @ViewChild('studentForm') public createStudentForm: NgForm;
+   @ViewChild('studentForm') public stdForm: NgForm;
    previewPhoto:boolean = false;
    panelTitle: string ="Undefined";
 
@@ -25,7 +25,8 @@ export class CreateStudentComponent implements OnInit {
     isActive:null,
     dob:null,
     gender: null,
-    school: null
+    school: null,
+    picturePath: null
   }
 
   colorTheme = 'theme-dark-blue';
@@ -46,6 +47,7 @@ export class CreateStudentComponent implements OnInit {
         maxDate: new Date(2020,3,21),
         dateInputFormat: 'DD/MM/YYYY'
       });
+      console.log("Form object: " );
   }
 
   ngOnInit(): void {
@@ -71,25 +73,29 @@ export class CreateStudentComponent implements OnInit {
       school: null
     };
     this.panelTitle = 'New Student';
-    this.createStudentForm.reset();
+    console.log("NgForm:" + this.stdForm);
+    this.stdForm.reset();
   } else { //find the user from the student Service
     //need to break the reference by instantiating a new object
-      this.student = Object.assign({},this._studentService.getStudentById(sId));
+    this.student = Object.assign({},this._studentService.getStudentById(sId));
     this.panelTitle = 'Edit Student';
   }
   }
   saveStudent() :void {
     console.log(this.student);
-    const newStudent: Student = Object.assign({},this.student);
-    this._studentService.registerStudent(newStudent);
+    this._studentService.registerStudent(this.student)
+    .subscribe(
+      (data: Student) => { //Success
+        console.log('Saving student: ' + data);
+        this.stdForm.reset();
+        this._router.navigate(['list']);
+      }, 
+      (error:any) => console.log("Error Saving:" + error)
+
+    );
     //reset before routing away need to define stdForm as parameter
     //stdForm.reset();
     //or use the decorated form
-
-    this.createStudentForm.reset();
-    
-    this._router.navigate(['list']);
-
   }
   togglePhotoPreview() {
     this.previewPhoto = ! this.previewPhoto;

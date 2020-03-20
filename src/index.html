@@ -91,6 +91,19 @@ Passing Data between Components:
   5. Required Route Parameters /?
   6: Optional Route Parameters /;
   7: Query Parameters 
+REST API Test
+~~~~~~~~~~~~~~~~~~~~~
+1. install json-server: $sudo npm install -g json-server
+2. run json server: $json-server --watch db.json
+3. use Fiddler TestMan for testing
+4. Import HttpClientModule in app.module.ts and load it under imports section
+5. Import HttpClient in the StudentService.ts and inject it in the constructor
+6. Implement handleError , hint https://www.positronx.io/angular-error-handling-tutorial-with-examples/
+7. Error handling https://blog.angular-university.io/rxjs-error-handling/
+8. two versions of how to pass the error through the Observable chain,
+version 1, uses encapsulated class (favourite)
+Version 2, uses union <Array | string>
+
 
 -->
 <!doctype html>

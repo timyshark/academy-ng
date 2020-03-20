@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,7 @@ import { StudentListResolverService } from './students/student-list-resolver.ser
 import { PageNotFoundComponent } from './page-not-found.component';
 import { StudentDetailGuardService } from './students/student-details-guard.service';
 import { AccordionComponent } from './shared/accordion.component';
+import { ErrorIntercept } from './students/student-error-interceptor-service';
 
 const appRoutes:Routes =[
   {path:'list', component:ListStudentsComponent, resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor
@@ -61,12 +62,18 @@ const appRoutes:Routes =[
     AppRoutingModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
+    HttpClientModule,
     // RouterModule.forRoot(appRoutes, {enableTracing:true})
     RouterModule.forRoot(appRoutes)
    ],
   providers: [StudentService,
     createStudentCanDeactivateGuardService,
-    StudentListResolverService, StudentDetailGuardService
+    StudentListResolverService, StudentDetailGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorIntercept,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

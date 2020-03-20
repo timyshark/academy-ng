@@ -137,3 +137,25 @@ chunk {vendor} vendor.js, vendor.js.map (vendor) 3.4 MB [initial] [rendered]
 Date: 2020-03-14T05:16:23.123Z - Hash: 21eafb64310f5d5c9cc5 - Time: 11101ms
 ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
 : Compiled successfully.
+
+  \{^_^}/ hi!
+
+  Loading db.json
+  Done
+
+  Resources
+  http://localhost:3000/students
+
+  Home
+  http://localhost:3000
+
+  Type s + enter at any time to create a snapshot of the database
+  Error, can't read from stdin
+  Creating a snapshot from the CLI won't be possible
+[0mGET /db [32m200 [0m24.024 ms - 789[0m
+[0mGET /__rules [33m404 [0m33.033 ms - 2[0m
+[0mGET /students [36m304 [0m13.100 ms - -[0m
+[0mGET /students [36m304 [0m27.043 ms - -[0m
+[0mGET /students [36m304 [0m7.156 ms - -[0m
+[0mGET /students [36m304 [0m10.372 ms - -[0m
+[0mGET /students [36m304 [0m11.649 ms - -[0m

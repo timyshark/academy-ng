@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../models/student.model';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Resolve } from '@angular/router';
+import { ResolvedStudentList } from './resolved-studentlist.model';
 
 @Component({
   selector: 'app-list-students',
@@ -9,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ListStudentsComponent implements OnInit {
   studentsList : Student[] ;
+  error : string;
 
   
   private _searchTerm : string;
@@ -40,18 +42,35 @@ export class ListStudentsComponent implements OnInit {
 
 
   filterStudents(searchTerm : string) : Student[]{
+    console.log("Filtering list:");
     return this.studentsList.filter(student =>
       student.fName.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1) ;
   }
-  initStudentsList(stdList : Student[]) {
-    this.studentsList = stdList;
-    // console.log("Subscribe :" + new Date().toTimeString());
+  // Version 1: using ResolvedStudentList Encapsulation class
+  initStudentsList(stdList : ResolvedStudentList ) {
+    if (stdList.error==null){
+      this.studentsList = stdList.studentList;
+    } else {
+      this.error = stdList.error;
+    }
+
+
+/* Version 2: Direct 
+    initStudentsList(stdData : ResolvedStudentList | string) {
+      if (Array.isArray(stdData)) {
+        this.studentsList = stdData;
+      } else {
+        this.error = stdData.toString();
+      }
+*/
+      // console.log("Subscribe :" + new Date().toTimeString());
     if (this._aroute.snapshot.queryParamMap.has('searchTerm')) {
       this.searchTerm = this._aroute.snapshot.queryParamMap.get('searchTerm'); //automatically filters the students in the property setter
     } else {
       this.filteredStudents = this.studentsList;
       // console.log("Else Block :" + new Date().toTimeString());
     }
+    console.log("List filtered:" + JSON.stringify(this.studentsList));
   }
   ngOnInit() {
     // using Observable

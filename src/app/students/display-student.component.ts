@@ -70,6 +70,7 @@ export class DisplayStudentComponent implements OnInit {
  }
  */
   viewStudent(){
+    console.log("routing view student id:" + this.student.sId);
     this._router.navigate(["/students/" + this.student.sId],
     {queryParams : {'searchTerm' : this.searchTerm}});
   }

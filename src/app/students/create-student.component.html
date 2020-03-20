@@ -10,7 +10,7 @@
         [class.has-success]="fullName.valid" >
               <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
           <input required id="fullName" name="fullName" [(ngModel)]="student.fName" required
-          #fullName="ngModel" type="text" class="form-control" placeholder="Enter Student Full Name">
+          #fullName="ngModel" type="text" class="form-control" placeholder="Enter Student Full Name" ngModel>
           <span class="help-block" *ngIf="fullName.invalid && fullName.touched">Full name is required</span>
        </div>
   
@@ -20,7 +20,7 @@
             <input id="email" name="email"  [(ngModel)]="student.sEmail" type="email" 
             class="form-control"
             #email="ngModel" required placeholder="Enter Student Email  Address"
-            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[1-zA-Z0-9-.]{2,5}$">
+            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[1-zA-Z0-9-.]{2,5}$" ngModel>
            <span class="help-block" *ngIf="email.errors && email.errors.required && email.touched">Email is required</span>
            <span class="help-block" *ngIf="email.errors?.pattern && email.touched">Email invalid</span>
          </div>
@@ -28,11 +28,11 @@
             <label class="control-label">Gender</label>
             <div class="form-control">
                 <label class="radio-inline" >
-                    <input type="radio" required #gender="ngModel" value="M" name="gender" [(ngModel)]="student.gender">
+                    <input type="radio" required #gender="ngModel" value="M" name="gender" [(ngModel)]="student.gender" ngModel>
                     Male
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" required #gender="ngModel" value="F" name="gender" [(ngModel)]="student.gender">
+                    <input type="radio" required #gender="ngModel" value="F" name="gender" [(ngModel)]="student.gender" ngModel>
                     Female
                 </label>
             </div>
@@ -43,7 +43,7 @@
             <div class="form-control">
                 <label class="checkbox-inline control-label" >
                     <input type="checkbox"  name="isActive" #isActive ="ngModel" [(ngModel)]="student.isActive" 
-                    [required]="student.isActive==null" >
+                    [required]="student.isActive==null" ngModel>
                         Is Active?  
                 </label>           
             </div>
@@ -54,7 +54,7 @@
                 School
             </label>       
             <select id="customschool" appSchoolValidator.defaultValue="-999" name="customschool" #customschool="ngModel" 
-            [(ngModel)]="student.school" class="form-control">
+            [(ngModel)]="student.school" class="form-control" ngModel>
                 <option value="-999" >Select School</option>
                 <option *ngFor="let sch of schools" [ngValue]="sch.schoolCode">
                     {{sch.schoolName}}
@@ -66,12 +66,12 @@
             <div class="form-group col-md-2">
                 <label for="dob">Date of Birth</label>
                 <input id="dob" name="dob"  [(ngModel)]="student.dob" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" 
-                type="text" class="form-control">
+                type="text" class="form-control" ngModel>
             </div>
         </div>
         <div name="picturePath" class="form-group">
             <label for="picturePath">Student Picture</label>
-            <input id="picturePath" name="picturePath" [(ngModel)]="student.picturePath" type="text" class="form-control">
+            <input id="picturePath" name="picturePath" [(ngModel)]="student.picturePath" type="text" class="form-control" ngModel>
         </div>
             <div name="previewbtn" class="form-group">
                 <button (click)="togglePhotoPreview()" class="btn btn-primary" type="button" 

@@ -10,4 +10,5 @@ export class Student {
     school: string;
     password?: string;
     confirmPassword?:string;
+ 
 }
