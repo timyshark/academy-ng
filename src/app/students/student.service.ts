@@ -11,10 +11,10 @@ export class StudentService {
   
     private studentsList : Student[];
     private student : Student;
-
+    private baseUrl : string  = 'http://localhost:3000/students';
 
       getStudentsList(): Observable<Student[]> {
-        const stdObservable:Observable<Student[]> =this._httpClient.get<Student[]>('http://localhost:3000/students');
+        const stdObservable:Observable<Student[]> =this._httpClient.get<Student[]>(this.baseUrl);
         stdObservable.subscribe
         (response => 
           {
@@ -47,7 +47,8 @@ export class StudentService {
   }),
   finalize(() => console.log("second finalize() block executed"))
   )
-  ------------------------------------------------------------------------------------------------          tap(() => console.log("HTTP request executed")),
+  -----------------------------------------------------
+  tap(() => console.log("HTTP request executed")),
           map(res => Object.values(res["payload"]) ),
           shareReplay(),
           retryWhen(errors => {
@@ -73,49 +74,50 @@ export class StudentService {
           // console.log(stdList);
           return stdObservable;
       }
+      
       handleErrors(err){
         let errMsg = '';
         if (err.error instanceof ErrorEvent){ //Client Error
          // client-side error
-         errMsg = `Client side error: ${err.error.message}`;
+         errMsg = `ErrorHandle:Client side error: ${err.error.message}`;
         } else { //Server Error
            // server-side error
-           errMsg = `\nServer side error: ${err.status}\nMessage: ${err.message}\nStatus Text: ${err.statusText}\nName:${err.name}`;
+           errMsg = `\nErrorHandle:Server side error: ${err.status}\nMessage: ${err.message}\nStatus Text: ${err.statusText}\nName:${err.name}`;
         }
         console.log(err);
         return throwError(errMsg);
 
       }
+      
       registerStudent(newStudent: Student): Observable<Student>{
-        if (newStudent.sId === null){
           // find the maximum sId in the array
-          // const maxId = this.studentsList.reduce(function(s1,s2){
-          //   return (s1.sId > s2.sId) ? s1:s2;
-          // }).sId +1;
-          // newStudent.sId = maxId;
-          return this._httpClient.post<Student>('http://localhost:3000/students', newStudent, {
+          const maxId = this.studentsList.reduce(function(s1,s2){
+            return (s1.sId > s2.sId) ? s1:s2;
+          }).sId +1;
+          newStudent.sId = maxId;
+          console.log("creating new Student! sId:" + newStudent.sId);
+          return this._httpClient.post<Student>(this.baseUrl, newStudent, {
             headers: new HttpHeaders({
                'Content-Type' : 'application/json'
             })
           });
-        } else {
-          const stdIndex = this.studentsList.findIndex(
-            s => s.sId === newStudent.sId);
-          this.studentsList[stdIndex] = newStudent;
-        }
-      }
-      getStudentById(sId : number) : Student{
-        // find Student who sId equivalent(type and value) to sId
-        console.log("Students in the list: " + this.studentsList.length);
-        const std = this.studentsList.find(s => s.sId === sId);
-        console.log(JSON.stringify(std));
-        return std;
 
       }
-      deleteStudentById(sId : number){
-        const sIdNDX =this.studentsList.findIndex( s => s.sId === sId);
-        if (sIdNDX !== -1){
-          this.studentsList.splice(sIdNDX,1);
-        }
+      updateStudent(updatedStudent: Student): Observable<void> {
+          // find the maximum sId in the array
+          console.log("Updating Student! sId:" + updatedStudent.sId + " baseURL:" + this.baseUrl);
+          
+          return this._httpClient.put<void>(`${this.baseUrl}/${updatedStudent.sId}`, updatedStudent, {
+            headers: new HttpHeaders({
+               'Content-Type' : 'application/json'
+            })
+          });
+      }
+      getStudentById(sId : number) : Observable<Student>{    
+        return this._httpClient.get<Student>(`${this.baseUrl}/${sId}`);;
+      }
+      deleteStudentById(sId : number): Observable<void>{
+        return this._httpClient.delete<void>(`${this.baseUrl}/${sId}`);;
+ 
       }
 }

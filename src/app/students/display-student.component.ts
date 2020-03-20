@@ -75,8 +75,16 @@ export class DisplayStudentComponent implements OnInit {
     {queryParams : {'searchTerm' : this.searchTerm}});
   }
   deleteStudent(){
-    this._studentService.deleteStudentById(this.student.sId);
+    this._studentService.deleteStudentById(this.student.sId)
+    .subscribe(
+      () => {
+        console.log(`Deleting student  ${this.student.sId} was successful`);
+        location.reload();
+      },
+      (err: any) => console.log(`Error deleting student id ${this.student.sId} ${err}`)
+    );
     this.notify.emit(this.student.sId);
+    
 
   }
   editStudent(){

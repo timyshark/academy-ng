@@ -5,6 +5,7 @@ import { Student} from '../models/student.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { StudentService } from './student.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ResolvedStudentList } from './resolved-studentlist.model';
 
 @Component({
   selector: 'app-create-student',
@@ -16,6 +17,7 @@ export class CreateStudentComponent implements OnInit {
    @ViewChild('studentForm') public stdForm: NgForm;
    previewPhoto:boolean = false;
    panelTitle: string ="Undefined";
+   public hasError:boolean = false;
 
   student: Student = {
     sId:null,
@@ -37,6 +39,7 @@ export class CreateStudentComponent implements OnInit {
     { schoolCode:"UBC", schoolName:"University of British Columbia"},
     { schoolCode:"SFU", schoolName:"Simon Fraser University"}
   ];
+  error: ResolvedStudentList;
   constructor(private _studentService: StudentService,
               private _router: Router,
               private _aroute : ActivatedRoute) { 
@@ -47,7 +50,6 @@ export class CreateStudentComponent implements OnInit {
         maxDate: new Date(2020,3,21),
         dateInputFormat: 'DD/MM/YYYY'
       });
-      console.log("Form object: " );
   }
 
   ngOnInit(): void {
@@ -73,29 +75,52 @@ export class CreateStudentComponent implements OnInit {
       school: null
     };
     this.panelTitle = 'New Student';
-    console.log("NgForm:" + this.stdForm);
-    this.stdForm.reset();
+    // console.log("NgForm:" + this.stdForm);
+    // this.stdForm.reset();
   } else { //find the user from the student Service
     //need to break the reference by instantiating a new object
-    this.student = Object.assign({},this._studentService.getStudentById(sId));
-    this.panelTitle = 'Edit Student';
+     this.panelTitle = 'Edit Student';
+     this._studentService.getStudentById(sId).subscribe(
+       (student) => this.student = student,
+       (err:any) => {
+         this.hasError = true;
+         this.error = err;
+         console.log("Update error:" + err);
+       }
+     )
   }
   }
   saveStudent() :void {
-    console.log(this.student);
+    if (this.student.sId==null) {
     this._studentService.registerStudent(this.student)
     .subscribe(
       (data: Student) => { //Success
-        console.log('Saving student: ' + data);
-        this.stdForm.reset();
-        this._router.navigate(['list']);
+        console.log('Regostromg student: ' + data + " Success! and resetting form :" + this.stdForm);
       }, 
-      (error:any) => console.log("Error Saving:" + error)
+      (error:ResolvedStudentList) => {
+        console.log("Error cought: " + error.error);
+        this.hasError=true;
+        this.error =error;
+      });
+    } else {
+      this._studentService.updateStudent(this.student)
+      .subscribe(
+        () => { //Success
+          console.log('Updating student: ' + this.student + " Success!; and resetting form :" + this.stdForm);
+        }, 
+        (error:ResolvedStudentList) => {
+          console.log("Error cought: " + error.error);
+          this.hasError=true;
+          this.error =error;
+        }
+      );
+    }
 
-    );
     //reset before routing away need to define stdForm as parameter
-    //stdForm.reset();
+    this.stdForm.reset();
+    console.log("Form reset:" + this.stdForm);
     //or use the decorated form
+    this._router.navigate(['list']);
   }
   togglePhotoPreview() {
     this.previewPhoto = ! this.previewPhoto;

@@ -66,6 +66,9 @@ const appRoutes:Routes =[
     // RouterModule.forRoot(appRoutes, {enableTracing:true})
     RouterModule.forRoot(appRoutes)
    ],
+   exports: [
+     RouterModule
+   ],
   providers: [StudentService,
     createStudentCanDeactivateGuardService,
     StudentListResolverService, StudentDetailGuardService,

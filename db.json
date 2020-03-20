@@ -1,34 +1,40 @@
 {
   "students": [
-    { "sId": 1,
+    {
+      "id": 1,
+      "sId": 1,
       "fName": "Mathew",
       "lName": "Andria",
       "sEmail": "mark@andria.com",
       "picturePath": "assets/images/mark.png",
       "isActive": true,
-      "dob":"1988/10/3",
-      "gender":"M",
-      "school":"UBC"
+      "dob": "1988/10/3",
+      "gender": "M",
+      "school": "UBC"
     },
-    { "sId": 2,
+    {
+      "id": 2,
+      "sId": 2,
       "fName": "John",
       "lName": "Flamingo",
       "sEmail": "john@flamingo.com",
       "picturePath": "assets/images/john.png",
       "isActive": true,
-      "dob":"1997/2/3",
-      "gender":"M",
-      "school":"SFU"
+      "dob": "1997/2/3",
+      "gender": "M",
+      "school": "SFU"
     },
-    { "sId": 3,
+    {
+      "id": 3,
+      "sId": 3,
       "fName": "Mary",
       "lName": "Casandar",
       "sEmail": "mary@casandra.com",
       "picturePath": "assets/images/mary.png",
       "isActive": false,
-      "dob":"1995/7/23",
-      "gender":"F",
-      "school":"BCIT"
+      "dob": "1995/7/23",
+      "gender": "F",
+      "school": "BCIT"
     }
   ]
 }

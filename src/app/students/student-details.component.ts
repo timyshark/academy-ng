@@ -21,7 +21,10 @@ export class StudentDetailsComponent implements OnInit {
    // use this method to subscribe to the changes 
      this._aroute.paramMap.subscribe(params =>
      {this._sId = +params.get('sId');
-     this.student = this._studentService.getStudentById(this._sId);
+      this._studentService.getStudentById(this._sId).subscribe(
+        (student) => this.student = student,
+        (err:any) => console.log(err)
+      );
    
     });
     console.log('Looking for Student ID:' + this._sId)

@@ -1,7 +1,7 @@
 
 
 <form #studentForm="ngForm" ngNativeValidate (ngSubmit)="saveStudent()">
-    <div class="panel panel-primary" >
+    <div class="panel panel-primary" *ngIf="student">
         <div class="panel-heading">
             <h3 class="panel-title">{{panelTitle}}</h3>
         </div>
@@ -96,3 +96,6 @@ New student record: {{studentForm.value | json}}
 <br/>
 <br/>
 Student Model: {{student | json}}
+<div *ngIf="hasError" class="{color:red}">
+   Error: {{error.error}}
+</div>
