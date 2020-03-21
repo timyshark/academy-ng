@@ -36,11 +36,10 @@
                     <!-- ngSwitch works only with numbers -->
                     <div class="col-xs-6" [ngSwitch]="student.school">
                         : {{student.school}}
-                        <span *ngSwitchCase="1">University of British Columbia</span>
-                        <span *ngSwitchCase="1">BCIT</span>
-                        <span *ngSwitchCase="2">Simon Fraser University</span>
-                        <span *ngSwitchDefault>UnKnown</span>
-                    </div>
+                        <span *ngIf="student.school=='UBC'"> University of British Columbia</span>
+                        <span *ngIf="student.school=='BCIT'"> BCIT</span>
+                        <span *ngIf="student.school=='SFU'"> Simon Fraser University</span>
+                </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
@@ -50,6 +49,15 @@
                         : {{student.isActive}}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        Date of Birth
+                    </div>
+                    <div class="col-xs-6">
+                        : {{student.dob}}
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

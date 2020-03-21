@@ -16,19 +16,16 @@ export class StudentDetailsComponent implements OnInit {
               private _router :Router) { }
 
   ngOnInit(): void {
-    //reading parameters from the request
-   // this._sId = +this._aroute.snapshot.params['sId'];
-   // use this method to subscribe to the changes 
      this._aroute.paramMap.subscribe(params =>
-     {this._sId = +params.get('sId');
+     {this._sId = +params.get('sId'); //simple way to cast to int
       this._studentService.getStudentById(this._sId).subscribe(
-        (student) => this.student = student,
-        (err:any) => console.log(err)
+        (student) => {
+          this.student = student;
+        }
+        // ,
+        // (err:any) => console.log(err)
       );
-   
     });
-    console.log('Looking for Student ID:' + this._sId)
-    console.log(JSON.stringify(this.student));
   }
   goBack(){
     this._router.navigate(["/list"]);

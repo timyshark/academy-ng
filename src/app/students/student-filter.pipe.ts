@@ -11,7 +11,6 @@ export class StudentFilterPipe implements PipeTransform {
     private _counter=0;
     transform(students : Student[], searchTerm:string) : Student[] {
         this._counter ++;
-        console.log('Filter search executed [' + this._counter + '] times');
        if (!students || !searchTerm) {
            return students;
        }

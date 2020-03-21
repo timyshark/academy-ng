@@ -16,61 +16,15 @@ export class DisplayStudentComponent implements OnInit {
    @Input() searchTerm:string;
    confirmDelete : boolean = false;
   @Output() notify : EventEmitter<number> = new EventEmitter<number>();
-  /*
-  @Input() 
-  set sId(stdId:number) {
-    console.log('Student id changed from :' + this._stdId + ' to :' + stdId);
-    this._stdId = stdId;
-  }
-  get sId() {
-    return this._stdId;
-  }
-  /*
-  /*
-  @Input()
-  set student(std: Student) {
-    this._student = std;
-  }
-  get student(): Student {
-    return this._student;
-  }
-  */
+ 
   constructor(private _aroute: ActivatedRoute,
               private _router: Router ,
               private _studentService: StudentService) { }
-
-
-/*
-  ngOnChanges(changes: SimpleChanges): void {
-    const prevStudent = <Student>changes.student.previousValue;
-    const currentStudent = <Student>changes.student.currentValue;
-
-    for (const propName of Object.keys(changes)){
-      const change = changes[propName];
-      const from = JSON.stringify(change.previousValue);
-      const to = JSON.stringify(change.currentValue);
-      console.log(propName + ' changing from ' + from + ' to ' + to);
-    }
-
-    
-  }
-*/
-  ngOnInit() {
+ ngOnInit() {
     this.activeStudentId = +this._aroute.snapshot.paramMap.get('sId');
   }
-  /*
-  handleClick(){
-    console.log("Before emitting:" + JSON.stringify(this.student));
-    this.notify.emit(this.student);
-  }
-  */
- /*
- getStudentNameAndGender(): string {
-   return this.student.fName + ' ' + this.student.gender;
- }
- */
+
   viewStudent(){
-    console.log("routing view student id:" + this.student.sId);
     this._router.navigate(["/students/" + this.student.sId],
     {queryParams : {'searchTerm' : this.searchTerm}});
   }
@@ -78,14 +32,12 @@ export class DisplayStudentComponent implements OnInit {
     this._studentService.deleteStudentById(this.student.sId)
     .subscribe(
       () => {
-        console.log(`Deleting student  ${this.student.sId} was successful`);
         location.reload();
-      },
-      (err: any) => console.log(`Error deleting student id ${this.student.sId} ${err}`)
+      }
+      //,
+      //(err: any) => console.log(`Error deleting student id ${this.student.sId} ${err}`)
     );
     this.notify.emit(this.student.sId);
-    
-
   }
   editStudent(){
     this._router.navigate(["/edit/" + this.student.sId]);

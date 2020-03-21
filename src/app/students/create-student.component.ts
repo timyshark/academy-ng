@@ -22,7 +22,6 @@ export class CreateStudentComponent implements OnInit {
   student: Student = {
     sId:null,
     fName: null,
-    lName: null,
     sEmail:'test@test.com',
     isActive:null,
     dob:null,
@@ -45,10 +44,10 @@ export class CreateStudentComponent implements OnInit {
               private _aroute : ActivatedRoute) { 
     this.bsConfig = Object.assign({}, 
       { containerClass: this.colorTheme, 
-        showWeekNumbers: false,
+        showWeekNumbers: true,
         minDate: new Date(1950,1,1),
         maxDate: new Date(2020,3,21),
-        dateInputFormat: 'DD/MM/YYYY'
+        dateInputFormat: 'YYYY-MM-DD'
       });
   }
 
@@ -67,7 +66,6 @@ export class CreateStudentComponent implements OnInit {
     this.student = {
       sId:null,
       fName: null,
-      lName: null,
       sEmail:'test@test.com',
       isActive:null,
       dob:null,
@@ -75,9 +73,7 @@ export class CreateStudentComponent implements OnInit {
       school: null
     };
     this.panelTitle = 'New Student';
-    // console.log("NgForm:" + this.stdForm);
-    // this.stdForm.reset();
-  } else { //find the user from the student Service
+   } else { //find the user from the student Service
     //need to break the reference by instantiating a new object
      this.panelTitle = 'Edit Student';
      this._studentService.getStudentById(sId).subscribe(
@@ -85,7 +81,6 @@ export class CreateStudentComponent implements OnInit {
        (err:any) => {
          this.hasError = true;
          this.error = err;
-         console.log("Update error:" + err);
        }
      )
   }
@@ -95,10 +90,8 @@ export class CreateStudentComponent implements OnInit {
     this._studentService.registerStudent(this.student)
     .subscribe(
       (data: Student) => { //Success
-        console.log('Regostromg student: ' + data + " Success! and resetting form :" + this.stdForm);
       }, 
       (error:ResolvedStudentList) => {
-        console.log("Error cought: " + error.error);
         this.hasError=true;
         this.error =error;
       });
@@ -106,10 +99,8 @@ export class CreateStudentComponent implements OnInit {
       this._studentService.updateStudent(this.student)
       .subscribe(
         () => { //Success
-          console.log('Updating student: ' + this.student + " Success!; and resetting form :" + this.stdForm);
         }, 
         (error:ResolvedStudentList) => {
-          console.log("Error cought: " + error.error);
           this.hasError=true;
           this.error =error;
         }
@@ -118,7 +109,6 @@ export class CreateStudentComponent implements OnInit {
 
     //reset before routing away need to define stdForm as parameter
     this.stdForm.reset();
-    console.log("Form reset:" + this.stdForm);
     //or use the decorated form
     this._router.navigate(['list']);
   }

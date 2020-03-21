@@ -21,10 +21,10 @@ export class ErrorIntercept implements HttpInterceptor {
                     let errorMessage = '';
                     if (error.error instanceof ErrorEvent) {
                         // client-side error
-                        errorMessage = `Interceptor client rror: ${error.error.message}`;
+                        errorMessage = `Interceptor client error: ${error.error.message}`;
                     } else {
                         // server-side error
-                        errorMessage = `Interceptor server error Status: ${error.status}\nMessage: ${error.message}`;
+                        errorMessage = `Interceptor server error: ${error.status}\nMessage: ${error.message}`;
                     }
                     console.log(errorMessage);
                     return throwError(new ResolvedStudentList(null,errorMessage));

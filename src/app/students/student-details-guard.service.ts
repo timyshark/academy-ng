@@ -24,7 +24,6 @@ export class StudentDetailGuardService implements CanActivate {
                   }
               }),
               catchError((err) =>{
-                              console.log("Error finding student ID: " + sId);
                               return of(false);   
                             }    
               )

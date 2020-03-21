@@ -4,6 +4,5 @@ export class ResolvedStudentList {
     constructor(
         public studentList: Student[],
         public error: any=null) {  
-            console.log("Constructing ResolvedStudentList ");  
         }
 }
