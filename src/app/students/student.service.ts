@@ -8,11 +8,11 @@ export class StudentService {
   
     private studentsList : Student[];
     private student : Student;
-    private baseUrl : string  = 'http://localhost:9090';
+    private baseUrl : string  = 'https://tutorials-hahlabs.appspot.com';
 
       getStudentsList(): Observable<Student[]> {
         const stdObservable:Observable<Student[]> =
-              this._httpClient.get<Student[]>(`${this.baseUrl}/list-students.php`);
+              this._httpClient.get<Student[]>(`${this.baseUrl}/list-students`);
         stdObservable.subscribe
         (response => 
           {

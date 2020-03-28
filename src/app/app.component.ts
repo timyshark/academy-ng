@@ -8,7 +8,7 @@ import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, Naviga
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng-php-mysql';
+  title = 'Academy';
   showLoadingIndicator = true;
   constructor(private _router: Router){
   this._router.events.subscribe((routerEvent: Event) =>{

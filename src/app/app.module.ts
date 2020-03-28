@@ -37,7 +37,7 @@ const appRoutes:Routes =[
     },
   {path:'update', component:UpdateStudentComponent},
   {path:'pageNotFound', component:PageNotFoundComponent},
-  {path:'', redirectTo:'/list', pathMatch: 'full'}
+  {path:'', redirectTo:'list', pathMatch: 'full'}
 
 ];
 @NgModule({

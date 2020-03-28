@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ng-php-mysql'`, () => {
+  it(`should have as title 'academy-ng'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ng-php-mysql');
+    expect(app.title).toEqual('academy-ng');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ng-php-mysql app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('academy-ng app is running!');
   });
 });
