@@ -18,6 +18,7 @@ export class CreateStudentComponent implements OnInit {
    previewPhoto:boolean = false;
    panelTitle: string ="Undefined";
    public hasError:boolean = false;
+   private pictureImage = null;
 
   student: Student = {
     sId:null,
@@ -115,4 +116,11 @@ export class CreateStudentComponent implements OnInit {
   togglePhotoPreview() {
     this.previewPhoto = ! this.previewPhoto;
   }
+  uploadedFile(event : any){
+    console.log("changed: " + event);
+    const files : File[] = event.files;
+    if (files.length > 0)
+       this.pictureImage = files[0];
+    else this.pictureImage = null;   
+  } 
 }

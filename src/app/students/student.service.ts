@@ -8,11 +8,14 @@ export class StudentService {
   
     private studentsList : Student[];
     private student : Student;
-    private baseUrl : string  = 'https://tutorials-hahlabs.appspot.com';
+    private baseUrl_firestore : string  = 'https://tutorials-hahlabs.appspot.com';
+    private baseUrl_mysql : string = "http://php.hahlabs.com/academy/api"
+    private baseUrl = this.baseUrl_mysql;
+    private service_suffix : string = ".php";
 
       getStudentsList(): Observable<Student[]> {
         const stdObservable:Observable<Student[]> =
-              this._httpClient.get<Student[]>(`${this.baseUrl}/list-students`);
+              this._httpClient.get<Student[]>(`${this.baseUrl}/list-students` + this.service_suffix);
         stdObservable.subscribe
         (response => 
           {
@@ -32,7 +35,7 @@ export class StudentService {
             return (s1.sId > s2.sId) ? s1:s2;
           }).sId +1;
           newStudent.sId = maxId;
-          return this._httpClient.post<Student>(this.baseUrl +'/create-student.php', newStudent, {
+          return this._httpClient.post<Student>(this.baseUrl +'/create-student' + this.service_suffix, newStudent, {
             headers: new HttpHeaders({
                'Content-Type' : 'application/json'
             })
@@ -40,17 +43,17 @@ export class StudentService {
       }
       updateStudent(updatedStudent: Student): Observable<void> {
           // find the maximum sId in the array          
-          return this._httpClient.put<void>(`${this.baseUrl}/update-student.php`, updatedStudent, {
+          return this._httpClient.put<void>(`${this.baseUrl}/update-student` + this.service_suffix, updatedStudent, {
             headers: new HttpHeaders({
                'Content-Type' : 'application/json'
             })
           });
       }
       getStudentById(sId : number) : Observable<Student>{    
-        return this._httpClient.get<Student>(`${this.baseUrl}/get-student-by-id.php?sId=${sId}`);
+        return this._httpClient.get<Student>(`${this.baseUrl}/get-student-by-id${this.service_suffix}?sId=${sId}`);
       }
       deleteStudentById(sId : number): Observable<void>{
-        return this._httpClient.delete<void>(`${this.baseUrl}/delete-student.php/?sId=${sId}`);;
+        return this._httpClient.delete<void>(`${this.baseUrl}/delete-student${this.service_suffix}/?sId=${sId}`);;
  
       }
 }

@@ -26,7 +26,9 @@ import { AccordionComponent } from './shared/accordion.component';
 import { ErrorIntercept } from './students/student-error-interceptor-service';
 
 const appRoutes:Routes =[
-  {path:'list', component:ListStudentsComponent, resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor
+  {path:'list', 
+     component:ListStudentsComponent, 
+     resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor
   {path:'students/:sId', 
      component:StudentDetailsComponent,
      canActivate: [StudentDetailGuardService]

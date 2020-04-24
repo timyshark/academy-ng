@@ -69,9 +69,12 @@
                 type="text" class="form-control" ngModel>
             </div>
         </div>
+        <div name="fileupload">
+            <input #pictureImage type="file" id="fileUpload" (change) = "uploadedFile(pictureImage)">
+        </div>
         <div name="picturePath" class="form-group">
             <label for="picturePath">Student Picture</label>
-            <input id="picturePath" name="picturePath" [(ngModel)]="student.picturePath" type="text" class="form-control" ngModel>
+            <input id="picturePath" name="picturePath" [(ngModel)]="student.picturePath" type="Text" class="form-control" ngModel>
         </div>
             <div name="previewbtn" class="form-group">
                 <button (click)="togglePhotoPreview()" class="btn btn-primary" type="button" 
