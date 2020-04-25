@@ -1,4 +1,4 @@
-#for installation under folder "app"
+#for installation under folder "academy-ng"
 
 Options +FollowSymLinks
 IndexIgnore */*
@@ -12,4 +12,4 @@ RewriteCond %{REQUEST_URI} !/api
 
 # otherwise forward it to index.html 
 RewriteRule ^.*$ - [NC,L]
-RewriteRule ^app/. /app/index.html [NC,L]
+RewriteRule ^academy-ng/. /academy-ng/index.html [NC,L]

@@ -9,7 +9,7 @@ export class StudentService {
     private studentsList : Student[];
     private student : Student;
     private baseUrl_firestore : string  = 'https://tutorials-hahlabs.appspot.com';
-    private baseUrl_mysql : string = "http://php.hahlabs.com/academy/api"
+    private baseUrl_mysql : string = "http://ajs-test.edudate.academy/academy-php/api"
     private baseUrl = this.baseUrl_mysql;
     private service_suffix : string = ".php";
 
