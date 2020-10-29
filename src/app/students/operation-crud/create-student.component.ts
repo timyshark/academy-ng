@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { School } from '../models/school.model';
-import { Student} from '../models/student.model';
+import { School } from '../../models/school.model';
+import { Student} from '../../models/student.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-import { StudentService } from './student.service';
+import { StudentService } from '../services/student.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ResolvedStudentList } from './resolved-studentlist.model';
+import { ResolvedStudentList } from '../helpers/resolved-studentlist.model';
 
 @Component({
   selector: 'app-create-student',

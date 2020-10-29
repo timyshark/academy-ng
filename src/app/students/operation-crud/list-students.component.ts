@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../models/student.model';
+import { Student } from '../../models/student.model';
 import { Router, ActivatedRoute, Resolve } from '@angular/router';
-import { ResolvedStudentList } from './resolved-studentlist.model';
+import { ResolvedStudentList } from '../helpers/resolved-studentlist.model';
 
 @Component({
   selector: 'app-list-students',
@@ -35,7 +35,8 @@ export class ListStudentsComponent implements OnInit {
     if (stdList.error==null){
       this.studentsList = stdList.studentList;
     } else {
-      this.error = stdList.error;
+      this._router.navigate(['/login']);
+      this.error = stdList.error.status  + ": " + stdList.error.message;
     }
     if (this._aroute.snapshot.queryParamMap.has('searchTerm')) {
       this.searchTerm = this._aroute.snapshot.queryParamMap.get('searchTerm'); //automatically filters the students in the property setter

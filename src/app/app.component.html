@@ -1,6 +1,21 @@
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <alert></alert>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <nav class="navbar navbar-default">
         <ul class="nav navbar-nav">
+            <li>
+                <a class="nav-item nav-link" routerLink="/">Home    </a>
+            </li>
             <li>
                 <a routerLink="list">List</a>
             </li>
@@ -8,7 +23,13 @@
                 <a routerLink="edit/0">Create</a>
             </li>
             <li>
-                <a routerLink="update">Update-Testing</a>
+                <a routerLink="test">Testing</a>
+            </li>           
+            <li>
+                <a *ngIf="!currentUser" routerLink="login">Login</a>
+            </li>
+            <li>
+                <a  *ngIf="currentUser" (click)="logout()">Logout</a>
             </li>
         </ul>
     </nav>

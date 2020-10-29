@@ -1,29 +1,53 @@
+
+//Framework
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { RouterModule, Routes } from '@angular/router';
+
+//CSS Styles
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ListStudentsComponent } from './students/list-students.component';
-import { CreateStudentComponent } from './students/create-student.component';
-import { RouterModule, Routes } from '@angular/router';
-import { UpdateStudentComponent } from './students/update-student.component';
+
+//Students
+import { ListStudentsComponent } from './students/operation-crud/list-students.component';
+import { CreateStudentComponent } from './students/operation-crud/create-student.component';
+import { UpdateStudentComponent } from './students/operation-crud/update-student.component';
 import { SchoolValidator } from './validators/school.validator';
 import { ConfirmPasswordValidator } from './validators/password-confirm.validator';
-import { StudentService } from './students/student.service';
-import { DisplayStudentComponent } from './students/display-student.component';
-import { createStudentCanDeactivateGuardService } from './students/create-student-can-deactivate-guard.service';
-import { StudentDetailsComponent } from './students/student-details.component';
-import { StudentFilterPipe } from './students/student-filter.pipe';
-import { StudentListResolverService } from './students/student-list-resolver.service';
-import { PageNotFoundComponent } from './page-not-found.component';
-import { StudentDetailGuardService } from './students/student-details-guard.service';
+import { DisplayStudentComponent } from './students/operation-crud/display-student.component';
+import { StudentDetailsComponent } from './students/operation-crud/student-details.component';
+
+
+//Students->Services/Guards/Filters/Resolvers
+import { StudentService } from './students/services/student.service';
+import { createStudentCanDeactivateGuardService } from './students/operation-crud/create-student-can-deactivate-guard.service';
+import { StudentFilterPipe } from './students/helpers/student-filter.pipe';
+import { StudentListResolverService } from './students/services/student-list-resolver.service';
+import { StudentDetailGuardService } from './students/operation-crud/student-details-guard.service';
+
+//Application commons
+import { PageNotFoundComponent } from './home/page-not-found.component';
 import { AccordionComponent } from './shared/accordion.component';
-import { ErrorIntercept } from './students/student-error-interceptor-service';
+import { HomeComponent } from './home/home.component';
+
+//Interceptors
+import { ErrorInterceptor } from './students/interceptors/error-interceptor';
+import { JwtInterceptor } from './students/interceptors/jwt.interceptor';
+
+
+//Authentication
+import { JwtModule } from '@auth0/angular-jwt';
+import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './students/alert/alert.component';
+import { RegisterComponent } from './login/register.component';
+import { AuthGuard } from './login/auth.guard';
+import { AsyncTestComponent } from './test/async-test/async-test.component';
+import { ZippyComponent } from './test/async-test/Zippy.component';
 
 const appRoutes:Routes =[
   {path:'list', 
@@ -37,9 +61,12 @@ const appRoutes:Routes =[
      component:CreateStudentComponent,
      canDeactivate:[createStudentCanDeactivateGuardService]
     },
+    {path: 'test', component:AsyncTestComponent},
   {path:'update', component:UpdateStudentComponent},
   {path:'pageNotFound', component:PageNotFoundComponent},
-  {path:'', redirectTo:'list', pathMatch: 'full'}
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 
 ];
 @NgModule({
@@ -54,10 +81,17 @@ const appRoutes:Routes =[
     StudentDetailsComponent,
     StudentFilterPipe,
     PageNotFoundComponent,
-    AccordionComponent
+    AccordionComponent,
+    AlertComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    AsyncTestComponent,
+    ZippyComponent
     
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -66,19 +100,30 @@ const appRoutes:Routes =[
     BrowserAnimationsModule,
     HttpClientModule,
     // RouterModule.forRoot(appRoutes, {enableTracing:true})
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+             return     localStorage.getItem('access_token');},
+        whitelistedDomains: ['php.hahlabs.com/academy'],
+        blacklistedRoutes: ['http://localhost:3000/auth/login']
+      }
+    })
    ],
    exports: [
      RouterModule
    ],
   providers: [StudentService,
     createStudentCanDeactivateGuardService,
-    StudentListResolverService, StudentDetailGuardService,
+    StudentListResolverService, StudentDetailGuardService, 
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ErrorIntercept,
+      useClass: ErrorInterceptor,
       multi: true
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, 
+      useClass: JwtInterceptor, 
+      multi: true },
   ],
   bootstrap: [AppComponent]
 })

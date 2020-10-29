@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { Student } from '../models/student.model';
+import { Student } from '../../models/student.model';
 import { ActivatedRoute, Router} from '@angular/router';
-import { StudentService } from './student.service';
+import { StudentService } from '../services/student.service';
 
 @Component({
   selector: 'app-display-student',
@@ -30,8 +30,7 @@ export class DisplayStudentComponent implements OnInit {
   }
   deleteStudent(){
     this._studentService.deleteStudentById(this.student.sId)
-    .subscribe(
-      () => {
+    .subscribe(() => {
         location.reload();
       }
       //,

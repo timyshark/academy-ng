@@ -1,8 +1,10 @@
 import { PipeTransform, Pipe } from '@angular/core';
-import { Student } from '../models/student.model';
-
+import { Student } from '../../models/student.model';
+/*
+This is not recommended way to do filtering, due to performance, see the note in README.md
+*/
 @Pipe({
-    name: 'studentFilter',
+    name: 'studentFilter',  //the name used in the html list to pipe
     //true default, impure tracks changes even mouse moves
     pure: false
 

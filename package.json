@@ -1,6 +1,6 @@
 {
   "name": "academy-ng",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
+    "@auth0/angular-jwt": "^4.0.0",
+    "@types/crypto-js": "^3.1.44",
     "bootstrap": "^3.4.1",
     "jquery": "^3.4.1",
     "ngx-bootstrap": "^5.5.0",

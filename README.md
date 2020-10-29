@@ -73,10 +73,11 @@ Form Navigation Guarding:
 4. Note: won't work if new address on address bar internal or external
 
 Search Filtering:
-(Pipe not recommended)
+(Pipe not recommended) Performance issues
 1. create search html block list-student -- bind it with ListComponent "define search term"
 2. create search pipe filter class ,Annotate @Pipe, Register app.Module.ts in declaration section
-3. Pure change doesn't re-evaluate the filter pipe, Impure change do re-evaluate
+3. in the list-students.html add *ngFor="let student of students | studentFilter:searchTerm"
+4. in the Fitler class , Pure change doesn't re-evaluate the filter pipe, Impure change do re-evaluate, Pure change is change that 
 
 Passing Parameters:
 ~~~~~~~~~~~~~~~~~~
@@ -161,3 +162,11 @@ NOTE for Apache 2
 <Directory "/var/www/html">
   AllowOverride All
 </Directory>
+
+
+Angular Authentication JWT
+1. Install npm install @auth0/angular-jwt --save
+2. create JWT Service : ng generate service students/studentJWT
+3. Edit login, logout, register, isLoggedIn funtions in the JWT Service
+4. import import { JwtModule } from '@auth0/angular-jwt'; in app.modules.ts & Edit the imports section
+5. retrieve and add access_token from localstorage.getItem('access_token') include it in the header as per Laravel Requirement
