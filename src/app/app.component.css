@@ -99,4 +99,7 @@
       transform: rotate(360deg);
     }
   }
-  
+  // global application styles
+a {
+    cursor: pointer;
+}

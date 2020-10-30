@@ -1,0 +1,6 @@
+#!/bin/bash
+cd dist
+tar czf academy-ng.tar.gz academy-ng
+scp -P 7822 academy-ng.tar.gz  hahlabs1@ftp.hahlabs.com:ajs-test.edudate.academy
+cd ..
+
