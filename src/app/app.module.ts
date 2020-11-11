@@ -48,27 +48,14 @@ import { RegisterComponent } from './login/register.component';
 import { AuthGuard } from './login/auth.guard';
 import { AsyncTestComponent } from './test/async-test/async-test.component';
 import { ZippyComponent } from './test/async-test/Zippy.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ContactHomeComponent } from './contact/home/home.component';
+import { ContactCreateComponent } from './contact/contact-create/contact-create.component';
+import { ContactListComponent } from './contact/contact-list/contact-list.component';
+import { HeaderComponent } from './contact/header/header.component';
+import { FooterComponent } from './contact/footer/footer.component';
 
-const appRoutes:Routes =[
-  {path:'list', 
-     component:ListStudentsComponent, 
-     resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor
-  {path:'students/:sId', 
-     component:StudentDetailsComponent,
-     canActivate: [StudentDetailGuardService]
-    },
-  {path:'edit/:sId', 
-     component:CreateStudentComponent,
-     canDeactivate:[createStudentCanDeactivateGuardService]
-    },
-    {path: 'test', component:AsyncTestComponent},
-  {path:'update', component:UpdateStudentComponent},
-  {path:'pageNotFound', component:PageNotFoundComponent},
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
 
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +74,12 @@ const appRoutes:Routes =[
     LoginComponent,
     RegisterComponent,
     AsyncTestComponent,
-    ZippyComponent
+    ZippyComponent,
+    ContactHomeComponent,
+    ContactCreateComponent,
+    ContactListComponent,
+    HeaderComponent,
+    FooterComponent,
     
   ],
   imports: [
@@ -99,17 +91,16 @@ const appRoutes:Routes =[
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
-    // RouterModule.forRoot(appRoutes, {enableTracing:true})
-    RouterModule.forRoot(appRoutes),
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: function  tokenGetter() {
-             return     localStorage.getItem('access_token');},
-        whitelistedDomains: ['php.hahlabs.com/academy'],
-        blacklistedRoutes: ['http://localhost:3000/auth/login']
-      }
-    })
-   ],
+    NgbModule,
+  //   JwtModule.forRoot({
+  //     config: {
+  //       tokenGetter: function  tokenGetter() {
+  //            return     localStorage.getItem('access_token');},
+  //       whitelistedDomains: ['php.hahlabs.com/academy'],
+  //       blacklistedRoutes: ['http://localhost:3000/auth/login']
+  //     }
+  //   })
+    ],
    exports: [
      RouterModule
    ],

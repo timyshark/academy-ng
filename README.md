@@ -33,6 +33,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   2. npm install bootstrap@3
   3. npm install ngx-bootstrap
   2. import bootstrap styles : check styles.css or angular.json styles and scripts section
+  https://www.smashingmagazine.com/2019/02/angular-application-bootstrap/ 
   2. create the model student.ts: new text file in models folder
   3. create list students component: $ng g c students/list-students --skipTests=true --flat=true
   5. pupulate sample data in list-students.ts file
@@ -144,7 +145,7 @@ Firebase scripts:
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="/__/firebase/7.13.1/firebase-analytics.js"></script>
 
-<!-- Initialize Firebase -->
+<!-- Initialize Firebase 
 <script src="/__/firebase/init.js"></script>
 -->
 
@@ -165,8 +166,14 @@ NOTE for Apache 2
 
 
 Angular Authentication JWT
+
 1. Install npm install @auth0/angular-jwt --save
 2. create JWT Service : ng generate service students/studentJWT
 3. Edit login, logout, register, isLoggedIn funtions in the JWT Service
 4. import import { JwtModule } from '@auth0/angular-jwt'; in app.modules.ts & Edit the imports section
 5. retrieve and add access_token from localstorage.getItem('access_token') include it in the header as per Laravel Requirement
+
+
+
+
+Note: After migrating to Angular 10, Bootstrap broke, working on fixing it.
