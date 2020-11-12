@@ -7,7 +7,7 @@ import {AlertService} from '../students/services/alert-service.service';
 import { AuthenticationService } from '../students/services/authentication.service';
 import { User } from '../models/user.model';
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({selector: 'login',  templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
@@ -38,15 +38,17 @@ export class LoginComponent implements OnInit {
 
        //this code executes only when the component activated
         this.route.url
-      .subscribe(url => console.log('The URL changed to: ' + url));
+            .subscribe(url => console.log('The URL changed to: ' + url));
     }
 
     // convenience getter for easy access to form fields
-    get f() { return this.loginForm.controls; }
+  //  get fcontrols() { return this.loginForm.value; }
+
+    get fcontrols() { return this.loginForm.controls; }
 
     onSubmit() {
         this.submitted = true;
-
+    
         // reset alerts on submit
         this.alertService.clear();
 
@@ -56,11 +58,12 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        const user = new User(this.f.username.value,this.f.password.value)
+        const user = new User(this.fcontrols.username.value,this.fcontrols.password.value)
         this.authenticationService.login(user)
             .pipe(first())
             .subscribe(
                 data => {
+                    console.log("User is logged in");
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {

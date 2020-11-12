@@ -26,12 +26,24 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+##Install
+$npm install -g @angular/cli 
+$ng new --force --routing=true --skipGit=true --style=css  --createApplication=false academy-ng <-- after cloning from Github,  
+$cd academy-ng 
+$npm install bootstrap --save 
+$npm install jquery 
+$npm install popper.js 
+  download popper.min.js from "https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js" and manually update local one 
+$npm install ngx-bootstrap 
+$npm install   @auth0/angular-jwt 
+$npm install @angular/core 
+$npm install zone 
+  5. use angular.json loading sequence 
+  6 install fontawesome (follow instructions) https://github.com/FortAwesome/angular-fontawesome 
 
 <!--
   This tutorial uses bootstrap@3, need to work on bootstrap v4 Classes do not work on bootstrap v4
   1. create the project $ng new proj
-  2. npm install bootstrap@3
-  3. npm install ngx-bootstrap
   2. import bootstrap styles : check styles.css or angular.json styles and scripts section
   https://www.smashingmagazine.com/2019/02/angular-application-bootstrap/ 
   2. create the model student.ts: new text file in models folder

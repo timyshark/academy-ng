@@ -26,7 +26,7 @@ const contactRoutes: Routes = [
 const academyRoutes:Routes =[
   {path:'list', 
      component:ListStudentsComponent, 
-     resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor
+     resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor as the Class Name
   {path:'students/:sId', 
      component:StudentDetailsComponent,
      canActivate: [StudentDetailGuardService]
@@ -35,12 +35,13 @@ const academyRoutes:Routes =[
      component:CreateStudentComponent,
      canDeactivate:[createStudentCanDeactivateGuardService]
     },
-    {path: 'test', component:AsyncTestComponent},
+  {path: 'test', component:AsyncTestComponent},
   {path:'update', component:UpdateStudentComponent},
   {path:'pageNotFound', component:PageNotFoundComponent},
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: '**', component: PageNotFoundComponent },   //Page not found: use wild card '**'
 
 ];
 @NgModule({

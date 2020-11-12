@@ -4,12 +4,14 @@ export class User {
     email : string;
     password: string;
     api_token: string;
-    constructor (uname : string, upass: string){
-        this.email = uname;
-        this.password = upass;
+    constructor (email : string, pass: string){
+        this.email = email;
+        this.password = pass;
     }
 }
 
 export class AuthRecord {
-    data: User;
+    token : string ;
+    token_type: string;
+    expires_in: string;
 }
