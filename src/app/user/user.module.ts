@@ -7,6 +7,7 @@ import { UsersHeaderComponent } from './tiles/header/users-header.component';
 import { UsersFooterComponent } from './tiles/footer/users-footer.component';
 import { LoginComponent } from './operations/login/login.component';
 import { UpdateUserComponent } from './operations/update-user/update-user.component';
+import { HomeComponent } from './tiles/home/home.component';
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { UpdateUserComponent } from './operations/update-user/update-user.compon
         UpdateUserComponent,
         UsersHeaderComponent,
         UsersFooterComponent,
+        HomeComponent
         ]
 })
 export class UserModule { }

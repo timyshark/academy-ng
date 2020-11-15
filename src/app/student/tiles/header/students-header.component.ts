@@ -4,7 +4,7 @@ import { HeaderComponent } from 'src/app/tiles/header/header.component';
 @Component({
   selector: 'students-header',
   templateUrl: './students-header.component.html',
-  styleUrls: ['../../../tiles/header/header.component.css']
+  styleUrls: ['./students-header.component.css']
 })
 export class StudentsHeaderComponent extends HeaderComponent  {
 

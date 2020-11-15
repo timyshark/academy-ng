@@ -1,6 +1,4 @@
-<app-header></app-header>
-<div *ngIf="user"> 
-<h1 >Hi {{user.email}}!</h1>
-</div>
+<h1 >Hi {{user?.email}}!</h1>
 <h2>Welcome to Academy home page</h2>
-<app-footer></app-footer> 
+<a href="/users/login">Sign in</a><br/>
+<a href="/users/register">Sign up</a>

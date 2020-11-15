@@ -27,7 +27,7 @@ export class ConfirmPasswordValidator implements Validator{
 
 //      used for passwordGroup
 const  passwordControl = passwordGroup.get("password");
-const  confirmPasswordControl = passwordGroup.get("confirmPassword");
+const  confirmPasswordControl = passwordGroup.get("password_confirmation");
 if (passwordControl && confirmPasswordControl
      && passwordControl.value!== confirmPasswordControl.value) {
             return {'mismatch' : true};

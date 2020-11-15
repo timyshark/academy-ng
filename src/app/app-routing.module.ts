@@ -9,8 +9,8 @@ const academyRoutes:Routes =[
   { path:'home', component:HomeComponent}, 
   { path:'PNF', component:PageNotFoundComponent},
   { path: '', component: HomeComponent}, //, canActivate: [AuthGuard] },
-  { path:'users' , loadChildren: usersModule},
   { path:'students' , loadChildren: studentsModule}, //, canActivate: [AuthGuard]},
+  { path:'users' , loadChildren: usersModule},
   { path: '**', component: PageNotFoundComponent },   //Page not found: use wild card '**'
 
 ];

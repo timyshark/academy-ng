@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StudentFilterPipe } from './helpers/student-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentRoutingModule } from './student-routing.module';
-import { SchoolValidator } from '../validators/school.validator';
+import { SchoolValidator } from './services/school.validator';
 import { CreateStudentComponent } from './operations/create-student/create-student.component';
 import { DisplayStudentComponent } from './operations/display-student/display-student.component';
 import { ListStudentsComponent } from './operations/list-students/list-students.component';
@@ -21,6 +21,7 @@ import { StudentsLayoutComponent } from './tiles/students-layout/students-layout
 
 
 
+
 @NgModule({
   declarations: [
     DisplayStudentComponent,
@@ -34,7 +35,7 @@ import { StudentsLayoutComponent } from './tiles/students-layout/students-layout
     StudentsLayoutComponent,
     StudentsHeaderComponent,
     StudentsFooterComponent,
-    HomeComponent
+    HomeComponent,
 
   ],
   imports: [

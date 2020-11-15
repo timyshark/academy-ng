@@ -9,13 +9,14 @@ import { StudentDetailGuardService } from './operations/student-details/student-
 import { StudentDetailsComponent } from './operations/student-details/student-details.component';
 import { StudentsLayoutComponent } from './tiles/students-layout/students-layout.component';
 import { UpdateStudentComponent } from './operations/update-student/update-student.component';
-import { PageNotFoundComponent } from './tiles/pnf/page-not-found.component';
+import { PageNotFoundComponent } from '../tiles/pnf/page-not-found.component';
+import { HomeComponent } from './tiles/home/home.component';
 
-
-const studentsRoutes:Routes =[{
+const studentsRoutes:Routes =[
+     {
       path: '', component: StudentsLayoutComponent,
       children: [
-          { path: '', component: StudentsLayoutComponent },
+          { path: '', component: HomeComponent },
           { path: 'add', component: CreateStudentComponent },
           { path: 'edit/:id', component: UpdateStudentComponent },
           { path:'list', component: ListStudentsComponent, 
@@ -23,17 +24,15 @@ const studentsRoutes:Routes =[{
           { path:':sId', component: StudentDetailsComponent,
                canActivate: [StudentDetailGuardService]},
           { path:'edit/:sId', component: CreateStudentComponent,
-               canDeactivate:[createStudentCanDeactivateGuardService]
-          },
-          { path: '**', component: PageNotFoundComponent}
-     
-     ]
+               canDeactivate:[createStudentCanDeactivateGuardService]},     
+       ]
   }
 ];
 
 
 @NgModule({
-  declarations: [],
-  imports: [RouterModule.forChild(studentsRoutes) ]
+  //declarations: [],
+  imports: [RouterModule.forChild(studentsRoutes) ],
+  exports: [RouterModule]
 })
 export class StudentRoutingModule { }

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsersFooterComponent } from './users-footer.component';
 
-describe('FooterComponent', () => {
+describe('UsersFooterComponent', () => {
   let component: UsersFooterComponent;
   let fixture: ComponentFixture<UsersFooterComponent>;
 

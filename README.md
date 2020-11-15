@@ -60,14 +60,14 @@ $npm install zone
   5. create the saveStudent method in create-student.ts
   6. use bsDatePicker from ngx-bootstrap , check website for docs, and how to configure
 -------------------------------------------------------------------------------
-Event Emitter : https://ultimatecourses.com/blog/component-events-event-emitter-output-angular-2
+Event Emitter Child/Master: https://ultimatecourses.com/blog/component-events-event-emitter-output-angular-2
 ~~~~~~~~~~~~~~~
 1. child source (Sender) need to define output @Output() notify : EventEmitter<number> = new EventEmitter<number>();  see display-student.component.ts
 2. use this.notify.emit(..) to send the event
 3. in parent html, <app-display-student [student]="std" (notify)="handleNotify($event)" ></app-display-student>;the method handleNotify in the parent ts file
 4. handleNotify(count){ localcount = count} ; input parameter is of basic type
 
-Messages between components: https://jasonwatmore.com/post/2019/02/07/angular-7-communicating-between-components-with-observable-subject
+Messages between components Observables/Subjects: https://jasonwatmore.com/post/2019/02/07/angular-7-communicating-between-components-with-observable-subject
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1. create message service $ng g s home/alert 
 2. create message queue as Subject in service AlertService 
@@ -80,6 +80,10 @@ SubModule, accessed url /sub-module
 2. in parent app-routing.module.ts, add this line to the usersRoutes[] := {path:'users' , loadChildren: userModule, canActivate: [AuthGuard]} and     imports: [RouterModule.forChild(usersRoutes)], in the *NgModule
 3. in <module> i.e. users.module.ts, load all components and the module routing class ex. UsersRoutingModule in the imports section
 4. add the line {path:'users' , loadChildren: userModule}, as part of the app modules routes i.e. app-routing.module.ts
+5. See users-routing.module.ts for details, first path path: '', component: UserLayoutComponent,  //<-- Should point to the layout, must include <router-outlet></router-outlet> to be able to handle children
+6. first child { path: '', component: HomeComponent }, points to the home page of the module, 
+Ideally, contents should be organized to reflect this relationship, for example, you can have headers in the layout page, and sub-titles in the home page or any other page in the module, that is, the layout page forms the parent of all other children pages, like wise , the app.component.html is the parent of all, typically you would include general look and feel, and let the modules handle the specifics such as the nav menus and so on.
+7. layout is cascaded throughout the levels, meaning layout of root, will be carried over to the sub-modules throughout the chain
 
 Make tiles inherited accross modules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
