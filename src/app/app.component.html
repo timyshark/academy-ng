@@ -1,45 +1,22 @@
+
+<app-header></app-header>
+
+
 <!-- main app container -->
 <div class="jumbotron">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 offset-sm-3">
-                <alert></alert>
-                <h1>Jumborton section</h1>
-              <router-outlet></router-outlet> 
+              <router-outlet></router-outlet>
+              <alert></alert> 
             </div>
         </div>
     </div>
 </div>
 
+
 <div class="container">
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">Academy Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
-      
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="list">Students</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="edit/0">Register</a>
-            </li>
-            <li>
-                <a class="nav-link" *ngIf="!currentUser" routerLink="login">Login</a>
-            </li>
-            <li>
-                <a class="nav-link" *ngIf="currentUser" (click)="logout()">Logout</a>
-            </li>
-      
-          </ul>
-        </div>
-    </nav>
+    
 
     <!-- Sample 1 using simple HTML5 animation
     <div *ngIf="showLoadingIndicator" class="spinner"></div>
@@ -47,6 +24,7 @@
 
     <!-- Sample 2 using Pure ccs Loader from https://loading.io/css-->
     <div class="lds-roller" *ngIf="showLoadingIndicator"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    <h1>Primary Section</h1>
-    <router-outlet></router-outlet>
+     <router-outlet></router-outlet>
 </div>
+
+<app-footer></app-footer>

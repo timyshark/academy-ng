@@ -60,7 +60,33 @@ $npm install zone
   5. create the saveStudent method in create-student.ts
   6. use bsDatePicker from ngx-bootstrap , check website for docs, and how to configure
 -------------------------------------------------------------------------------
-  
+Event Emitter : https://ultimatecourses.com/blog/component-events-event-emitter-output-angular-2
+~~~~~~~~~~~~~~~
+1. child source (Sender) need to define output @Output() notify : EventEmitter<number> = new EventEmitter<number>();  see display-student.component.ts
+2. use this.notify.emit(..) to send the event
+3. in parent html, <app-display-student [student]="std" (notify)="handleNotify($event)" ></app-display-student>;the method handleNotify in the parent ts file
+4. handleNotify(count){ localcount = count} ; input parameter is of basic type
+
+Messages between components: https://jasonwatmore.com/post/2019/02/07/angular-7-communicating-between-components-with-observable-subject
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. create message service $ng g s home/alert 
+2. create message queue as Subject in service AlertService 
+3. on reciever, home/alert.component.ts , inject on constructor, get the queue subject, subscribe, unsubscribe onDestroy, display on html page alert.component.html
+4. Sender (Anycomponent), inject on constructor, use postMessage or clearMessages to send messages
+
+SubModule, accessed url /sub-module
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. create module and routing e.g user/user.module.ts, user/user-routing.module.ts   $ng g m <module-folder>/<module-name>  --flat=true
+2. in parent app-routing.module.ts, add this line to the usersRoutes[] := {path:'users' , loadChildren: userModule, canActivate: [AuthGuard]} and     imports: [RouterModule.forChild(usersRoutes)], in the *NgModule
+3. in <module> i.e. users.module.ts, load all components and the module routing class ex. UsersRoutingModule in the imports section
+4. add the line {path:'users' , loadChildren: userModule}, as part of the app modules routes i.e. app-routing.module.ts
+
+Make tiles inherited accross modules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. create a component in the new module i.e. tiles/users-header.component.ts; remove html/css files
+2. make the class "export class UsersHeaderComponent extens HeaderComponent"
+3. in the class UsersHeaderComponent, change the references to html, css to point to the global html/css files i.e. ../../../tiles/header.component.html/css could use absolute start from /src/... or relative ../../../tiles/header/
+
  Form Validation:
 ~~~~~~~~~~~~~~~~
    Custom Validation:
@@ -177,8 +203,7 @@ NOTE for Apache 2
 </Directory>
 
 
-Angular Authentication JWT
-
+Angular Authentication JWT: https://jasonwatmore.com/post/2020/07/18/angular-10-user-registration-and-login-example-tutorial
 1. Install npm install @auth0/angular-jwt --save
 2. create JWT Service : ng generate service students/studentJWT
 3. Edit login, logout, register, isLoggedIn funtions in the JWT Service
@@ -188,4 +213,4 @@ Angular Authentication JWT
 
 
 
-Note: After migrating to Angular 10, Bootstrap broke, working on fixing it.
+Note: After migrating to Angular 10, Bootstrap broke, need to re-install all modules as noted above.

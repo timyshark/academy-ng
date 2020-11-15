@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from '@angular/router';
 import { User } from './models/user.model';
-import { AuthenticationService } from './students/services/authentication.service'
-
+import { UserService } from './user/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +10,11 @@ import { AuthenticationService } from './students/services/authentication.servic
 })
 export class AppComponent {
       title = 'Academy';
-      currentUser : User;
+      user : User;
       showLoadingIndicator = true;
       constructor(private _router: Router, 
-                  private authenticationService: AuthenticationService){
-                        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+                  private userService: UserService){
+                        this.userService.user.subscribe(x => this.user = x);
                         
                         this._router.events.subscribe(
                         (routerEvent: Event) =>{
@@ -31,8 +30,8 @@ export class AppComponent {
                         )
                   }
       logout() {
-              this.authenticationService.logout();
-              this._router.navigate(['/login']);
+              this.userService.logout();
+              this._router.navigate(['/users/login']);
           }
   
 
