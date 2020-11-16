@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
-import { UserLayoutComponent } from './tiles/users-layout/user-layout.component';
-import { UsersHeaderComponent } from './tiles/header/users-header.component';
-import { UsersFooterComponent } from './tiles/footer/users-footer.component';
-import { LoginComponent } from './operations/login/login.component';
-import { UpdateUserComponent } from './operations/update-user/update-user.component';
-import { HomeComponent } from './tiles/home/home.component';
+import { ListUsersComponent } from './_operations/list-users/list-users.component';
+import { LoginComponent } from './_operations/login/login.component';
+import { UpdateUserComponent } from './_operations/update-user/update-user.component';
+import { UsersFooterComponent } from './_tiles/footer/users-footer.component';
+import { UsersHeaderComponent } from './_tiles/header/users-header.component';
+import { HomeComponent } from './_tiles/home/home.component';
+import { UserLayoutComponent } from './_tiles/users-layout/user-layout.component';
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { HomeComponent } from './tiles/home/home.component';
         UpdateUserComponent,
         UsersHeaderComponent,
         UsersFooterComponent,
-        HomeComponent
+        HomeComponent,
+        ListUsersComponent,
         ]
 })
 export class UserModule { }

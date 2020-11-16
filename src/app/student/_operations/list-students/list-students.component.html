@@ -1,0 +1,51 @@
+<!-- <div  *ngFor="let student of studentsList" >
+    <student-display [student]="student"></student-display>
+</div>
+
+<h2>{{dataFromChild?.fName}}</h2> 
+
+
+<button (click)="nextStudent()" class="btn btn-primary">View next student</button>
+
+<student-display [student]="std" (notify)="handleNotify($event)" ></student-display>
+ <div (click)="h1RefVar.innerHTML = childComponent.student.fName + ' ' + childComponent.student.gender">
+    
+    
+    
+    <div (click)="h1RefVar.innerHTML = childComponent.getStudentNameAndGender()">
+        <student-display [student]="std" #childComponent></student-display>
+    </div>
+<h1 #h1RefVar>
+
+</h1>
+-->
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Search By Name" 
+      [(ngModel)]="searchTerm" />
+   </div>
+   <!--
+   <div class="form-group">
+    <button type="button" class="btn btn-primary" (click)="changeStudentName()"  >Change Name</button>
+   </div>
+   -->
+<!--
+    <div *ngFor="let std of filteredStudents " >
+    <div (click)="onClick(std.sId)" class="pointerCursor">
+        <student-display [student]="std" ></student-display>
+    </div>
+
+            <a [routerLink] = "['/students', std.sId]"
+            [queryParams]="{ 'searchTerm': 'J', 'testParam' : 'hcLinkTestValue'}">
+           Details
+         </a>
+     </div>
+-->  
+<div *ngFor="let std of filteredStudents " >
+    <div >
+        <student-display [student]="std" [searchTerm]="searchTerm" (notify)="onNotifyStudentDelete($event)"></student-display>
+    </div>
+</div>
+<div *ngIf="error">
+    <h3 style="color:red">Error :{{error}}</h3>
+    <br/>Typically should be routed to custom error page
+</div>

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './operations/login/login.component';
-import { UpdateUserComponent } from './operations/update-user/update-user.component';
-import { HomeComponent } from './tiles/home/home.component';
-import { UserLayoutComponent } from './tiles/users-layout/user-layout.component';
+import { HomeComponent } from '../_tiles/home/home.component';
+import { ListUsersComponent } from './_operations/list-users/list-users.component';
+import { LoginComponent } from './_operations/login/login.component';
+import { UpdateUserComponent } from './_operations/update-user/update-user.component';
+import { UserLayoutComponent } from './_tiles/users-layout/user-layout.component';
+
 
 const usersRoutes: Routes = [
     {
@@ -12,7 +14,8 @@ const usersRoutes: Routes = [
             { path: '', component: HomeComponent },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: UpdateUserComponent },
-            { path: 'edit/:id', component: UpdateUserComponent }
+            { path: 'edit/:id', component: UpdateUserComponent },
+            { path: 'list', component: ListUsersComponent },
         ]
     }
 ];

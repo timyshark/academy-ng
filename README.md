@@ -64,7 +64,7 @@ Event Emitter Child/Master: https://ultimatecourses.com/blog/component-events-ev
 ~~~~~~~~~~~~~~~
 1. child source (Sender) need to define output @Output() notify : EventEmitter<number> = new EventEmitter<number>();  see display-student.component.ts
 2. use this.notify.emit(..) to send the event
-3. in parent html, <app-display-student [student]="std" (notify)="handleNotify($event)" ></app-display-student>;the method handleNotify in the parent ts file
+3. in parent html, <student-display [student]="std" (notify)="handleNotify($event)" ></student-display>;the method handleNotify in the parent ts file
 4. handleNotify(count){ localcount = count} ; input parameter is of basic type
 
 Messages between components Observables/Subjects: https://jasonwatmore.com/post/2019/02/07/angular-7-communicating-between-components-with-observable-subject

@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { StudentListResolverService } from './services/student-list-resolver.service';
-import { createStudentCanDeactivateGuardService } from './operations/create-student/create-student-can-deactivate-guard.service';
-import { CreateStudentComponent } from './operations/create-student/create-student.component';
-import { ListStudentsComponent } from './operations/list-students/list-students.component';
-import { StudentDetailGuardService } from './operations/student-details/student-details-guard.service';
-import { StudentDetailsComponent } from './operations/student-details/student-details.component';
-import { StudentsLayoutComponent } from './tiles/students-layout/students-layout.component';
-import { UpdateStudentComponent } from './operations/update-student/update-student.component';
-import { PageNotFoundComponent } from '../tiles/pnf/page-not-found.component';
-import { HomeComponent } from './tiles/home/home.component';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from '../_tiles/home/home.component';
+import { createStudentCanDeactivateGuardService } from './_operations/create-student/create-student-can-deactivate-guard.service';
+import { CreateStudentComponent } from './_operations/create-student/create-student.component';
+import { ListStudentsComponent } from './_operations/list-students/list-students.component';
+import { StudentDetailsComponent } from './_operations/student-details/student-details.component';
+import { UpdateStudentComponent } from './_operations/update-student/update-student.component';
+import { StudentDetailGuardService } from './_services/student-details-guard.service';
+import { StudentListResolverService } from './_services/student-list-resolver.service';
+import { StudentsLayoutComponent } from './_tiles/students-layout/students-layout.component';
 
 const studentsRoutes:Routes =[
      {

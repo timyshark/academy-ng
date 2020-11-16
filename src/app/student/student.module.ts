@@ -1,24 +1,23 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudentFilterPipe } from './helpers/student-filter.pipe';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StudentRoutingModule } from './student-routing.module';
-import { SchoolValidator } from './services/school.validator';
-import { CreateStudentComponent } from './operations/create-student/create-student.component';
-import { DisplayStudentComponent } from './operations/display-student/display-student.component';
-import { ListStudentsComponent } from './operations/list-students/list-students.component';
-import { StudentDetailsComponent } from './operations/student-details/student-details.component';
-import { UpdateStudentComponent } from './operations/update-student/update-student.component';
-import { createStudentCanDeactivateGuardService } from './operations/create-student/create-student-can-deactivate-guard.service';
-import { StudentDetailGuardService } from './operations/student-details/student-details-guard.service';
-import { StudentListResolverService } from './services/student-list-resolver.service';
-import { StudentService } from './services/student.service';
-import { AccordionComponent } from './operations/display-student/accordion/accordion.component';
-import { StudentsFooterComponent } from './tiles/footer/students-footer.component';
-import { StudentsHeaderComponent } from './tiles/header/students-header.component';
-import { HomeComponent } from './tiles/home/home.component';
-import { StudentsLayoutComponent } from './tiles/students-layout/students-layout.component';
-
+import { createStudentCanDeactivateGuardService } from './_operations/create-student/create-student-can-deactivate-guard.service';
+import { CreateStudentComponent } from './_operations/create-student/create-student.component';
+import { AccordionComponent } from './_operations/display-student/accordion/accordion.component';
+import { DisplayStudentComponent } from './_operations/display-student/display-student.component';
+import { ListStudentsComponent } from './_operations/list-students/list-students.component';
+import { StudentDetailsComponent } from './_operations/student-details/student-details.component';
+import { UpdateStudentComponent } from './_operations/update-student/update-student.component';
+import { SchoolValidator } from './_services/school.validator';
+import { StudentDetailGuardService } from './_services/student-details-guard.service';
+import { StudentFilterPipe } from './_services/student-filter.pipe';
+import { StudentListResolverService } from './_services/student-list-resolver.service';
+import { StudentService } from './_services/student.service';
+import { StudentsFooterComponent } from './_tiles/footer/students-footer.component';
+import { StudentsHeaderComponent } from './_tiles/header/students-header.component';
+import { HomeComponent } from './_tiles/home/home.component';
+import { StudentsLayoutComponent } from './_tiles/students-layout/students-layout.component';
 
 
 

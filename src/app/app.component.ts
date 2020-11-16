@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from '@angular/router';
-import { User } from './models/user.model';
-import { UserService } from './user/services/user.service';
+import { User } from './user/_models/user.model';
+import { UserService } from './user/_services/user.service';
 
 @Component({
   selector: 'app-root',

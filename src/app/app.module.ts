@@ -6,30 +6,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
-//CSS Styles
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-//Students
-import { ConfirmPasswordValidator } from './validators/password-confirm.validator';
-
-
-//Students->Services/Guards/Filters/Resolvers
-
-
-
-//Authentication
 import { JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ErrorInterceptor } from './user/services/error-interceptor';
-import { AlertComponent } from './tiles/alert/alert.component';
-import { FooterComponent } from './tiles/footer/footer.component';
-import { HeaderComponent } from './tiles/header/header.component';
-import { HomeComponent } from './tiles/home/home.component';
-import { PageNotFoundComponent } from './tiles/pnf/page-not-found.component';
+import { ConfirmPasswordValidator } from './_services/password-confirm.validator';
+import { FooterComponent } from './_tiles/footer/footer.component';
+import { HeaderComponent } from './_tiles/header/header.component';
+import { PageNotFoundComponent } from './_tiles/pnf/page-not-found.component';
+import { HomeComponent } from './_tiles/home/home.component';
+import { AlertComponent } from './_tiles/alert/alert.component';
+import { ErrorInterceptor } from './user/_services/error-interceptor';
 
 
 @NgModule({
