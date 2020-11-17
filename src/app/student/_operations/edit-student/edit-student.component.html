@@ -1,0 +1,106 @@
+<form #studentForm="ngForm" ngNativeValidate (ngSubmit)="saveStudent()">
+    <div class="panel panel-primary" *ngIf="student">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{panelTitle}}</h3>
+        </div>
+    <div class="panel-body">    
+        <div name="first_name" class="form-group " [class.has-error]="first_name.invalid && first_name.touched"
+        [class.has-success]="first_name.valid" >
+              <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+          <input required id="first_name" name="first_name" [(ngModel)]="student.first_name" required
+          #first_name="ngModel" type="text" class="form-control" placeholder="Enter Student First Name" ngModel>
+          <span class="help-block" *ngIf="first_name.invalid && first_name.touched">Student first name is required</span>
+       </div>
+       <div name="last_name" class="form-group " [class.has-error]="last_name.invalid && last_name.touched"
+       [class.has-success]="last_name.valid" >
+             <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+         <input required id="last_name" name="last_name" [(ngModel)]="student.last_name" required
+         #last_name="ngModel" type="text" class="form-control" placeholder="Enter Student Last Name" ngModel>
+         <span class="help-block" *ngIf="last_name.invalid && last_name.touched">Student last name is required</span>
+      </div>
+ 
+         <div name="email" class="form-group" [class.has-error]="email.invalid && email.touched" 
+         [class.has-success]="email.valid" >
+            <label for="email" class="control-label">Email</label>
+            <input id="email" name="email"  [(ngModel)]="student.email" type="email" 
+            class="form-control"
+            #email="ngModel" required placeholder="Enter Student Email  Address"
+            pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[1-zA-Z0-9-.]{2,5}$" ngModel>
+           <span class="help-block" *ngIf="email.errors && email.errors.required && email.touched">Email is required</span>
+           <span class="help-block" *ngIf="email.errors?.pattern && email.touched">Student Email invalid</span>
+         </div>
+        <div name="gender" class="form-group" [class.has-error]="gender.touched && gender.invalid">
+            <label class="control-label">Gender</label>
+            <div class="form-control">
+                <label class="radio-inline" >
+                    <input type="radio" required #gender="ngModel" value="M" name="gender" [(ngModel)]="student.gender" ngModel>
+                    Male
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" required #gender="ngModel" value="F" name="gender" [(ngModel)]="student.gender" ngModel>
+                    Female
+                </label>
+            </div>
+            <span class="help-block" *ngIf="gender.invalid && gender.touched">Gender is required</span>
+
+        </div>
+        <div name="status" class="form-group" [class.has-error]="isActive.touched && isActive.invalid">
+            <div class="form-control">
+                <label class="checkbox-inline control-label" >
+                    <input type="checkbox"  name="isActive" #isActive ="ngModel" [(ngModel)]="student.isActive" 
+                    [required]="student.isActive==null" ngModel>
+                        Is Active?  
+                </label>           
+            </div>
+            <span class="help-block" *ngIf="isActive.errors?.required && isActive.touched">Student status is required</span>
+        </div>
+        <div name="customschool" class="form-group" [class.has-error]="customschool.touched && customschool.invalid">
+            <label for="customschool" class="control-label">
+                School
+            </label>       
+            <select id="customschool" appSchoolValidator.defaultValue="-999" name="customschool" #customschool="ngModel" 
+            [(ngModel)]="student.school" class="form-control" ngModel>
+                <option value="-999" >Select School</option>
+                <option *ngFor="let sch of schools" [ngValue]="sch.schoolCode">
+                    {{sch.schoolName}}
+                </option>
+            </select>    
+            <span class="help-block" *ngIf="customschool.errors?.defaultSelected && customschool.touched">Student School is required</span>
+        </div>
+        <div name="dob" class="row">
+            <div class="form-group col-md-2">
+                <label for="dob">Date of Birth</label>
+                <input id="dob" name="dob"  [(ngModel)]="student.dob" bsDatepicker #dp="bsDatepicker" [bsConfig]="bsConfig" 
+                type="text" class="form-control" ngModel>
+            </div>
+        </div>
+        <div name="fileupload">
+            <input #pictureImage type="file" id="fileUpload" (change) = "uploadedFile(pictureImage)">
+        </div>
+        <div name="picturePath" class="form-group">
+            <label for="picturePath">Student Picture</label>
+            <input id="picturePath" name="picturePath" [(ngModel)]="student.picturePath" type="Text" class="form-control" ngModel>
+        </div>
+            <div name="previewbtn" class="form-group">
+                <button (click)="togglePhotoPreview()" class="btn btn-primary" type="button" 
+                *ngIf="student.picturePath !== '' && student.picturePath!==null">
+                    {{!previewPhoto? "Show":"Hide"}} Picture
+                </button>
+            </div>
+                <div name="previewimg" class="form-group">
+                <img [src]="student.picturePath" height="200" width="200" *ngIf="previewPhoto &&
+                                student.picturePath !== '' && student.picturePath!==null" >
+            </div>
+    </div>
+    <div class="panel-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="studentForm.invalid">Save</button>
+    </div>
+
+    
+</div>
+
+</form>
+
+<div *ngIf="hasError" class="{color:red}">
+   Error: {{error.error}}
+</div>
