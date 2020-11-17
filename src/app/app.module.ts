@@ -21,7 +21,6 @@ import { HomeComponent } from './_tiles/home/home.component';
 import { AlertComponent } from './_tiles/alert/alert.component';
 import { ErrorInterceptor } from './user/_services/error-interceptor';
 
-
 @NgModule({
   declarations: [
     AppComponent,

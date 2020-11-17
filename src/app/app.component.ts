@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError} from '@angular/router';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { User } from './user/_models/user.model';
 import { UserService } from './user/_services/user.service';
 
@@ -12,8 +13,18 @@ export class AppComponent {
       title = 'Academy';
       user : User;
       showLoadingIndicator = true;
+      colorTheme = 'theme-dark-blue';
+      bsConfig: Partial<BsDatepickerConfig>;
       constructor(private _router: Router, 
                   private userService: UserService){
+
+                    this.bsConfig = Object.assign({}, 
+                      { containerClass: this.colorTheme, 
+                        showWeekNumbers: true,
+                        minDate: new Date(1950,1,1),
+                        maxDate: new Date(2020,3,21),
+                        dateInputFormat: 'YYYY-MM-DD'
+                      });
                         this.userService.user.subscribe(x => this.user = x);
                         
                         this._router.events.subscribe(
