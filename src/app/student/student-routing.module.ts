@@ -16,7 +16,7 @@ const studentsRoutes:Routes =[
       children: [
           { path: '', component: HomeComponent },
           { path: 'add', component: CreateStudentComponent },
-          { path: 'edit/:id', component: UpdateStudentComponent },
+          { path: 'edit/:id', component: CreateStudentComponent },
           { path:'list', component: ListStudentsComponent, 
                resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor as the Class Name
           { path:':sId', component: StudentDetailsComponent,

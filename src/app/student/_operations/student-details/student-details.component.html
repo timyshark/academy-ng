@@ -14,7 +14,7 @@
                             Full Name
                         </div>
                         <div class="col-xs-6">
-                            : {{student.fName}}
+                            : {{student.last_name}}, {{student.first_name}}
                         </div>
                     </div>
                     <div class="row">
@@ -22,7 +22,7 @@
                             Email Address
                         </div>
                         <div class="col-xs-6">
-                            : {{student.sEmail}}
+                            : {{student.email}}
                         </div>
                     </div>
                     <div class="row">
@@ -60,7 +60,7 @@
     </div>
     <div class="panel-footer">
        <!-- [routerLink passes parameters as array of objects -->                  
-        <a class="btn btn-primary" [routerLink]='["students/list",{sId:student.sId}]'
+        <a class="btn btn-primary" [routerLink]='["/students/list",{id:student.id}]'
                                     queryParamsHandling="preserve" >
         List
         </a>                       

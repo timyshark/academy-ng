@@ -4,23 +4,30 @@
             <h3 class="panel-title">{{panelTitle}}</h3>
         </div>
     <div class="panel-body">    
-        <div name="fname" class="form-group " [class.has-error]="fullName.invalid && fullName.touched"
-        [class.has-success]="fullName.valid" >
-              <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
-          <input required id="fullName" name="fullName" [(ngModel)]="student.fName" required
-          #fullName="ngModel" type="text" class="form-control" placeholder="Enter Student Full Name" ngModel>
-          <span class="help-block" *ngIf="fullName.invalid && fullName.touched">Full name is required</span>
+        <div name="first_name" class="form-group " [class.has-error]="first_name.invalid && first_name.touched"
+        [class.has-success]="first_name.valid" >
+              <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+          <input required id="first_name" name="first_name" [(ngModel)]="student.first_name" required
+          #first_name="ngModel" type="text" class="form-control" placeholder="Enter Student First Name" ngModel>
+          <span class="help-block" *ngIf="first_name.invalid && first_name.touched">Student first name is required</span>
        </div>
-  
+       <div name="last_name" class="form-group " [class.has-error]="last_name.invalid && last_name.touched"
+       [class.has-success]="last_name.valid" >
+             <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+         <input required id="first_name" name="first_name" [(ngModel)]="student.last_name" required
+         #last_name="ngModel" type="text" class="form-control" placeholder="Enter Student Last Name" ngModel>
+         <span class="help-block" *ngIf="last_name.invalid && last_name.touched">Student last name is required</span>
+      </div>
+ 
          <div name="email" class="form-group" [class.has-error]="email.invalid && email.touched" 
          [class.has-success]="email.valid" >
             <label for="email" class="control-label">Email</label>
-            <input id="email" name="email"  [(ngModel)]="student.sEmail" type="email" 
+            <input id="email" name="email"  [(ngModel)]="student.email" type="email" 
             class="form-control"
             #email="ngModel" required placeholder="Enter Student Email  Address"
             pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[1-zA-Z0-9-.]{2,5}$" ngModel>
            <span class="help-block" *ngIf="email.errors && email.errors.required && email.touched">Email is required</span>
-           <span class="help-block" *ngIf="email.errors?.pattern && email.touched">Email invalid</span>
+           <span class="help-block" *ngIf="email.errors?.pattern && email.touched">Student Email invalid</span>
          </div>
         <div name="gender" class="form-group" [class.has-error]="gender.touched && gender.invalid">
             <label class="control-label">Gender</label>

@@ -25,7 +25,7 @@ export class DisplayStudentComponent implements OnInit {
   }
 
   viewStudent(){
-    this._router.navigate(["/students/" + this.student.id],
+    this._router.navigate(["/students/edit/" + this.student.id],
     {queryParams : {'searchTerm' : this.searchTerm}});
   }
   deleteStudent(){
@@ -40,6 +40,6 @@ export class DisplayStudentComponent implements OnInit {
     this.notify.emit(this.student.id);
   }
   editStudent(){
-    this._router.navigate(["/edit/" + this.student.id]);
+    this._router.navigate(["/students/edit/" + this.student.id]);
   }
 }

@@ -15,17 +15,15 @@ export class StudentService {
 
     // All the asynch results, captured by the interceptor student-error-interceptor-service
       getStudentsList(): Observable<Student[]> {
-        return of([]);
-  //      const stdObservable:Observable<Student[]> =
-    //        return   this._httpClient.get<Student[]>(`${environment.apiUrl}/students`);
-             // { headers : this.makeHeaders()});
-       // stdObservable.subscribe();
-       // (response => {
-       //    this.studentsList = response.map
-       //    (item => { return item; });
-       //   }
-       // );
-      //  return stdObservable;
+       const stdObservable:Observable<Student[]> =
+           this._httpClient.get<Student[]>(`${environment.apiUrl}/students`);
+       stdObservable.subscribe();
+       (response => {
+          this.studentsList = response.map
+          (item => { return item; });
+         }
+       );
+       return stdObservable;
       }
       registerStudent(newStudent: Student): Observable<Student>{
           // find the maximum sId in the array

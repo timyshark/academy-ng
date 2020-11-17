@@ -5,7 +5,7 @@
 
 -->
 <!-- Add the class.panel-success if condition is true-->
-<students-accordion [title]="student.last_name" [hasJustViewed]="activeStudentId===student.id"
+<student-accordion [title]="student.last_name" [hasJustViewed]="activeStudentId===student.id"
    [isHidden]="true">
     <div class="col-xs-10 prjStudentBody">
         <div class="row vertical-align">
@@ -70,4 +70,4 @@
     </span>
     <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
   </div>
-</students-accordion>
+</student-accordion>
