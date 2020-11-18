@@ -14,13 +14,10 @@ const studentsRoutes:Routes =[
       path: '', component: StudentsLayoutComponent,
       children: [
           { path: '', component: HomeComponent },
-          { path:'list', component: ListStudentsComponent, 
-               resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor as the Class Name
-          { path: 'add', component: EditStudentComponent },
-          { path:'edit/:sId', component: EditStudentComponent,
-               canDeactivate:[EditStudentCanDeactivateGuardService]},     
-          { path:':sId', component: StudentDetailsComponent,
-               canActivate: [StudentDetailGuardService]},
+          { path:'list', component: ListStudentsComponent, resolve: {studentList: StudentListResolverService}}, //key 'studentList' is referenced in the listStudentComponent.ts constructor as the Class Name
+          { path: 'add', component: EditStudentComponent ,canDeactivate:[EditStudentCanDeactivateGuardService]},
+          { path:'edit/:id', component: EditStudentComponent, canDeactivate:[EditStudentCanDeactivateGuardService]},     
+          { path:':id', component: StudentDetailsComponent, canActivate: [StudentDetailGuardService]},
        ]
   }
 ];

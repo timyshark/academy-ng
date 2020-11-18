@@ -20,6 +20,8 @@ export class EditStudentComponent implements OnInit {
    public hasError:boolean = false;
    private pictureImage = null;
 
+
+   // Create a new student record, and initialize it
   student: Student = {
     id:null,
     first_name: null,

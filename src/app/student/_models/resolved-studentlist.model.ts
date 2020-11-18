@@ -1,8 +1,8 @@
-import { Student } from './student.model';
+import { vuStudent } from './student.model';
 
 export class ResolvedStudentList {
     constructor(
-        public studentList: Student[],
+        public studentList: vuStudent[],
         public error: any=null) {  
         }
 }
