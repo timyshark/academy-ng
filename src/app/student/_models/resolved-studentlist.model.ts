@@ -1,4 +1,4 @@
-import { Student } from '../_models/student.model';
+import { Student } from './student.model';
 
 export class ResolvedStudentList {
     constructor(

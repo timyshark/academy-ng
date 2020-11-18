@@ -4,13 +4,13 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { Router, ActivatedRoute } from '@angular/router';
 import { School } from '../../_models/school.model';
 import { Student } from '../../_models/student.model';
-import { ResolvedStudentList } from '../../_services/resolved-studentlist.model';
+import { ResolvedStudentList } from '../../_models/resolved-studentlist.model';
 import { StudentService } from '../../_services/student.service';
 
 @Component({
   selector: 'student-edit',
-  templateUrl: './create-student.component.html',
-  styleUrls: ['./create-student.component.css']
+  templateUrl: './edit-student.component.html',
+  styleUrls: ['./edit-student.component.css']
 })
 export class EditStudentComponent implements OnInit {
 //bring the form from html 
@@ -38,7 +38,8 @@ export class EditStudentComponent implements OnInit {
 
   schools : School[] = [
     { schoolCode:"UBC", schoolName:"University of British Columbia"},
-    { schoolCode:"SFU", schoolName:"Simon Fraser University"}
+    { schoolCode:"SFU", schoolName:"Simon Fraser University"},
+    { schoolCode:"BCIT", schoolName:"British Columbia Institute of Technology"}
   ];
   error: ResolvedStudentList;
   constructor(private _studentService: StudentService,
@@ -57,8 +58,8 @@ export class EditStudentComponent implements OnInit {
   ngOnInit(): void {
     this._aroute.paramMap.subscribe(
       parameterMap => {
-        const sId=  +parameterMap.get('sId');
-        this.getStudent(sId);
+        const id=  +parameterMap.get('id');
+        this.getStudent(id);
       }
     )
   }
@@ -102,8 +103,7 @@ export class EditStudentComponent implements OnInit {
     } else {
       this._studentService.updateStudent(this.student)
       .subscribe(
-        () => { //Success
-        }, 
+        ()  => { }, //success 
         (error:ResolvedStudentList) => {
           this.hasError=true;
           this.error =error;

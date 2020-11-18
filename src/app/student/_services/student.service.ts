@@ -18,11 +18,10 @@ export class StudentService {
        const stdObservable:Observable<Student[]> =
            this._httpClient.get<Student[]>(`${environment.apiUrl}/students`);
        stdObservable.subscribe();
-       (response => {
-          this.studentsList = response.map
-          (item => { return item; });
-         }
-       );
+      //  (response => {
+      //     this.studentsList = response.map(item => { return item; });
+      //    }
+      //  );
        return stdObservable;
       }
       registerStudent(newStudent: Student): Observable<Student>{

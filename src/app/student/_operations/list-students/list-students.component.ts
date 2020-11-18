@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ResolvedStudentList } from '../../_models/resolved-studentlist.model';
 import { Student } from '../../_models/student.model';
-import { ResolvedStudentList } from '../../_services/resolved-studentlist.model';
 
 @Component({
   selector: 'student_list',
@@ -34,6 +34,7 @@ export class ListStudentsComponent implements OnInit {
   initStudentsList(stdList : ResolvedStudentList ) {
     if (stdList.error==null){
       this.studentsList = stdList.studentList;
+      console.log(this.studentsList);
     } else {
       this._router.navigate(['/students/home']);
       this.error = stdList.error.status  + ": " + stdList.error.message;

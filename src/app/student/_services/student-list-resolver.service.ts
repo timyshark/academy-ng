@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { StudentService } from './student.service';
 import { Injectable } from '@angular/core';
 import { catchError, map} from 'rxjs/operators';
-import { ResolvedStudentList } from './resolved-studentlist.model';
+import { ResolvedStudentList } from '../_models/resolved-studentlist.model';
 
 /* 
 Version 1 
@@ -19,6 +19,7 @@ export class StudentListResolverService implements Resolve<ResolvedStudentList> 
                    return this._studentService.getStudentsList()
                     .pipe( 
                          map((stdList) => new ResolvedStudentList(stdList)),
+                         
                          catchError((err: any) => {return of(null,err);})
                     ); 
         }

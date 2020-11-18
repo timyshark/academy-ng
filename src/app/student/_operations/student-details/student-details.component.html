@@ -29,11 +29,8 @@
                         <div class="col-xs-6">
                             School Name
                         </div>
-                        <div class="col-xs-6" [ngSwitch]="student.school">
+                        <div class="col-xs-6" >
                             : {{student.school}}
-                            <span *ngIf="student.school=='UBC'">University of British Columbia</span>
-                            <span *ngIf="student.school=='BCIT'">BCIT</span>
-                            <span *ngIf="student.school=='SFU'">Simon Fraser University</span>
                         </div>
                     </div>
                     <div class="row">

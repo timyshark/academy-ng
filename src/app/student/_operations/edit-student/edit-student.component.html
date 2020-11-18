@@ -58,9 +58,9 @@
             <label for="customschool" class="control-label">
                 School
             </label>       
-            <select id="customschool" appSchoolValidator.defaultValue="-999" name="customschool" #customschool="ngModel" 
+            <select id="customschool" appSchoolValidator.defaultValue="NONE" name="customschool" #customschool="ngModel" 
             [(ngModel)]="student.school" class="form-control" ngModel>
-                <option value="-999" >Select School</option>
+                <option value="NONE" >Select School</option>
                 <option *ngFor="let sch of schools" [ngValue]="sch.schoolCode">
                     {{sch.schoolName}}
                 </option>

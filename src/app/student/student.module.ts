@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { StudentRoutingModule } from './student-routing.module';
-import { createStudentCanDeactivateGuardService } from './_operations/edit-student/edit-student-can-deactivate-guard.service';
-import { CreateStudentComponent } from './_operations/edit-student/edit-student.component';
 import { AccordionComponent } from './_operations/display-student/accordion/accordion.component';
 import { DisplayStudentComponent } from './_operations/display-student/display-student.component';
+import { EditStudentCanDeactivateGuardService } from './_operations/edit-student/edit-student-can-deactivate-guard.service';
+import { EditStudentComponent } from './_operations/edit-student/edit-student.component';
 import { ListStudentsComponent } from './_operations/list-students/list-students.component';
 import { StudentDetailsComponent } from './_operations/student-details/student-details.component';
 import { UpdateStudentComponent } from './_operations/update-student/update-student.component';
@@ -29,7 +28,7 @@ import { StudentsLayoutComponent } from './_tiles/students-layout/students-layou
     StudentDetailsComponent,
     StudentFilterPipe,
     ListStudentsComponent,
-    CreateStudentComponent,
+    EditStudentComponent,
     UpdateStudentComponent,
     SchoolValidator,
     AccordionComponent,
@@ -51,7 +50,7 @@ import { StudentsLayoutComponent } from './_tiles/students-layout/students-layou
   ],
   providers: [
     StudentService,
-    createStudentCanDeactivateGuardService,
+    EditStudentCanDeactivateGuardService,
     StudentListResolverService, StudentDetailGuardService
   ] 
   })
