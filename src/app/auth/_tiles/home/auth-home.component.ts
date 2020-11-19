@@ -5,7 +5,7 @@ import { UserService } from 'src/app/users/_services/user.service';
 
 @Component({ 
     selector : 'auth-home',
-    templateUrl: 'auth-home.component.html' ,
+    templateUrl: './auth-home.component.html' ,
     styleUrls: ['./auth-home.component.css']
 })
 export class AuthHomeComponent implements OnInit {

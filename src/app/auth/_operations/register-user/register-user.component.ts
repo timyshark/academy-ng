@@ -3,15 +3,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/_services/alert.service';
-import { UserService } from '../../_services/user.service';
+import { UserService } from 'src/app/users/_services/user.service';
 
 
 @Component({
-  selector: 'user-update',
-  templateUrl: './update-user.component.html',
-  styleUrls: ['./update-user.component.css']
+  selector: 'auth-register',
+  templateUrl: './register-user.component.html',
+  styleUrls: ['./register-user.component.css']
 })
-export class UpdateUserComponent implements OnInit {
+export class RegisterUserComponent implements OnInit {
 
 
     form: FormGroup;

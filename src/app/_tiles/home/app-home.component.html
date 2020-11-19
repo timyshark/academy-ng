@@ -1,5 +1,38 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">Academy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Academy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/students">Students</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/users">Users</a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/auth">Auth</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/auth/login">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/auth/register">Sign up</a>
+        </li>
+  
+      </ul>
+    </div>
+  </nav>
+
+
 <h1 >Hi {{user?.email}}!</h1>
 <h2>Welcome to Academy home page</h2>
-<a href="/users">Users</a><br/>
-<a href="/students">Students</a><br/>
-<a href="/auth">Authorization</a>

@@ -6,7 +6,4 @@ import { AppHeaderComponent } from 'src/app/_tiles/header/app-header.component';
   templateUrl: './auth-header.component.html',
   styleUrls: ['./auth-header.component.css']
 })
-export class AuthHeaderComponent extends AppHeaderComponent  {
-
-  
-}
+export class AuthHeaderComponent extends AppHeaderComponent  { }
