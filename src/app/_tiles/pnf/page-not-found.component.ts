@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/user/_models/user.model';
-import { UserService } from 'src/app/user/_services/user.service';
+import { User } from 'src/app/users/_models/user.model';
+import { UserService } from 'src/app/users/_services/user.service';
 
 @Component({
   selector: 'app-page-not-found',
