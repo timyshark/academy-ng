@@ -7,10 +7,6 @@ export class User {
     updated_at: string;
     created_at: string;
     
-    constructor (email : string, pass: string){
-        this.email = email;
-        this.password = pass;
-    }
 }
 
 export class AuthRecord {

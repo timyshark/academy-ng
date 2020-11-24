@@ -14,7 +14,6 @@ export class JwtInterceptor implements HttpInterceptor {
         let loggedUser : AuthRecord= JSON.parse(this.userService.loggedUser);
  
         if (loggedUser && loggedUser.token) {
-            console.log(`JWT Intercepter adding token:Bearer ${loggedUser.token}`);
             request = request.clone({
                 setHeaders: { 
                     Authorization: `bearer ${loggedUser.token}`

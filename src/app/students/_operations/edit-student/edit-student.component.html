@@ -59,7 +59,7 @@
                 School
             </label>       
             <select id="customschool" appSchoolValidator.defaultValue="NONE" name="customschool" #customschool="ngModel" 
-            [(ngModel)]="student.school" class="form-control" ngModel>
+            [(ngModel)]="student.school_code" class="form-control" ngModel>
                 <option value="NONE" >Select School</option>
                 <option *ngFor="let sch of schools" [ngValue]="sch.schoolCode">
                     {{sch.schoolName}}

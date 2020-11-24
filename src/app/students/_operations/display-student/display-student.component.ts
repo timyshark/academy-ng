@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
-import { Student } from '../../_models/student.model';
+import { Student, vuStudent } from '../../_models/student.model';
 import { StudentService } from '../../_services/student.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { StudentService } from '../../_services/student.service';
 export class DisplayStudentComponent implements OnInit {
   //private _student: Student;
   //private _stdId: number;
-  @Input() student:Student;
+  @Input() student:vuStudent;
    activeStudentId: number;
    @Input() searchTerm:string;
    confirmDelete : boolean = false;
@@ -33,8 +33,6 @@ export class DisplayStudentComponent implements OnInit {
     .subscribe(() => {
         location.reload();
       }
-      //,
-      //(err: any) => console.log(`Error deleting student id ${this.student.sId} ${err}`)
     );
     
     this.notify.emit(this.student.id);

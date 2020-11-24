@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthLayoutComponent } from './_tiles/layout/auth-layout.component';
 import { LoginComponent } from './_operations/login/login.component';
 import { RegisterUserComponent } from './_operations/register-user/register-user.component';
+import { ForbiddenNameValidatorDirective } from './_services/forbidden-name-validator/forbidden-name-validator.directive';
+import { UniqueEmailValidatorDirective } from './_services/unique-email-validator/unique-email-validator.directive';
 
 
 
@@ -20,6 +22,8 @@ import { RegisterUserComponent } from './_operations/register-user/register-user
     AuthHomeComponent,
     LoginComponent,
     RegisterUserComponent,
+    ForbiddenNameValidatorDirective,
+    UniqueEmailValidatorDirective,
   ],
   imports: [
     CommonModule,

@@ -34,7 +34,6 @@ export class ListStudentsComponent implements OnInit {
   initStudentsList(stdList : ResolvedStudentList ) {
     if (stdList.error==null){
       this.studentsList = stdList.studentList;
-      console.log(this.studentsList);
     } else {
       this._router.navigate(['/students/home']);
       this.error = stdList.error.status  + ": " + stdList.error.message;

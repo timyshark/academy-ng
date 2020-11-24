@@ -124,7 +124,6 @@ export class EditStudentComponent implements OnInit {
     this.previewPhoto = ! this.previewPhoto;
   }
   uploadedFile(event : any){
-    console.log("changed: " + event);
     const files : File[] = event.files;
     if (files.length > 0)
        this.pictureImage = files[0];

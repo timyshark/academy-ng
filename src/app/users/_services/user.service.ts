@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { delay, map, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User, RegisterRecord, AuthRecord } from '../_models/user.model';
 
@@ -22,7 +22,6 @@ export class UserService {
 
   register(registerUser : User) {
     registerUser.password_confirmation = registerUser.password;
-    console.log("Trying to register: " + JSON.stringify(registerUser));
    return this.httpClient.post<RegisterRecord>(
     `${environment.apiUrl}/auth/register`, 
                   registerUser,{
@@ -33,9 +32,13 @@ export class UserService {
                   }
             )
                 .pipe(tap(regRecord => {
-                   console.log("User: " + regRecord.user + ";" + regRecord.message);
                 }
           ))
+  }
+
+  isEmailTaken(email: string): Observable<RegisterRecord> {
+    let userValidate = new User();    userValidate.email = email;
+    return this.httpClient.get<RegisterRecord>(`${environment.apiUrl}/users/query/email/${email}`);
   }
   
   login(user : User) {
@@ -50,19 +53,10 @@ export class UserService {
               // store user details and jwt token in local storage to keep user logged in between page refreshes
               // could use window.sessionStorage. for session timed storage
               this.loggedUser = JSON.stringify(authRecord);
-              console.log("Token returned:" + authRecord.token);
               this.userSubject.next(user);
               return user;
             }));
 
-    //For troubleshooting
-    //  .subscribe(
-    //     (authRecord: AuthRecord) => { //<- on normal subscriber receive, we will receive this(authRecord) of type AuthRecord
-    //                console.log("Logged in success : " + JSON.stringify(authRecord));  //we Execute this
-    //    localStorage.setItem('access_token', authRecord.token);
-    //  }, 
-    //  (err: any) => { console.log("Error Logging in:" + err); }, //<-- in case of error raised, execute this
-    //  ()=> {console.log("user login POST completed");});  //<-- on completion, you will receive nothing, and execute this
 
   }
 
@@ -98,7 +92,6 @@ update(id, params) {
 delete(id: string) {
   return this.httpClient.delete(`${environment.apiUrl}/users/${id}`)
       .pipe(map(user => {
-        console.log('user deleted ' + JSON.stringify(user));
           // auto logout if the logged in user deleted their own record
          // if (id == this.userValue.id) {
          //     this.logout();

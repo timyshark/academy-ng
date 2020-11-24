@@ -20,7 +20,7 @@ import { AppHomeComponent } from './_tiles/home/app-home.component';
 import { AppComponent } from './_tiles/layout/app.component';
 import { AppHeaderComponent } from './_tiles/header/app-header.component';
 import { AppFooterComponent } from './_tiles/footer/app-footer.component';
-import { CrossFieldValidatorDirective } from './_services/cross-field-validator.directive';
+import { CrossFieldValidatorDirective } from './_services/cross-field-validator/cross-field-validator.directive';
 
 
 

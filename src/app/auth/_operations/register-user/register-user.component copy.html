@@ -1,0 +1,56 @@
+<h1 *ngIf="isAddMode">Add User</h1>
+<h1 *ngIf="!isAddMode">Edit User</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="name">User Name:</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">User name is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="email">E-Mail:</label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Last Name is required</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div [formGroup]="crossFieldGroup" appCrossFieldValidator 
+    [class.has-error]="crossFieldGroup.errors?.mismatch && !crossFieldGroup.errors?.required">
+    <div name="password" class="form-group" [class.has-error]="password.invalid && password.touched" 
+                [class.has-success]="password.valid">
+        <label for="password" class="control-label">Password</label>
+        <input name="password" required type="text" class="form-control"
+                [(ngModel)]="user.password" #password="ngModel">
+        <span class="help-block" *ngIf="password.touched && password.errors?.required">
+            Password is required
+        </span> 
+    </div>
+    <div name="password_confirmation" class="form-group" [class.has-error]="password_confirmation.invalid && password_confirmation.touched" 
+    [class.has-success]="password_confirmation.valid">
+        <label for="password_confirmation" class="control-label">Confirm Password</label>
+        <input name="password_confirmation" required type="text" class="form-control"
+        [(ngModel)]="user.password_confirmation" #password_confirmation="ngModel">
+        <span class="help-block" *ngIf="password_confirmation.touched && password_confirmation.errors?.required">
+            Confirm Password is required
+        </span> 
+        <span class="help-block" *ngIf="password_confirmation.touched && crossFieldGroup.errors?.mismatch && ! password_confirmation.errors?.required">
+            Passwords and confirm passwords do not match
+        </span> 
+    </div>
+    </div>
+
+
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/" class="btn btn-link">Cancel</a>
+    </div>
+</form>

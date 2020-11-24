@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
        //this code executes only when the component activated
         this.route.url
-            .subscribe(url => console.log('The URL changed to: ' + url));
+            .subscribe();
     }
 
     // convenience getter for easy access to form fields
@@ -60,14 +60,15 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        const user = new User(this.fcontrols.username.value,this.fcontrols.password.value)
-        this.userService.login(user)
+        const loginUser = new User();
+        loginUser.email = this.fcontrols.username.value;
+        loginUser.password = this.fcontrols.password.value;
+        this.userService.login(loginUser)
         //Commented for troubleshooting
             .pipe(first())
              .subscribe(
                  authRecord => {
-                     console.log("User is logged in");
-                     this.router.navigate(["/students"]);
+                    this.router.navigate(["/students"]);
                  },
                  error => {
                      this.alertService.error(error);

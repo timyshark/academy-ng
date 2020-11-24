@@ -22,7 +22,6 @@ export class StudentDetailsComponent implements OnInit {
         (student) => {this.student = student;},
          (err:any) => {
            // Re-route to error message
-           console.log(err);
          }
       );
     });

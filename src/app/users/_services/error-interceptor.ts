@@ -31,7 +31,6 @@ export class ErrorInterceptor implements HttpInterceptor {
             } else {
                 errorMsg = "Intercept server side :";
             }
-            console.log(JSON.stringify(err));
             errorMsg = errorMsg + '(' + err.status  + ") " + err.statusText + " - error:" + JSON.stringify(err.error) ;
     //      return throwError(new ResolvedStudentList(null,error.error));
             return throwError(errorMsg);
