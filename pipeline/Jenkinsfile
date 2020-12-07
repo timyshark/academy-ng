@@ -9,5 +9,11 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        bat(script: 'ng build', label: 'Building Academy Vue')
+      }
+    }
+
   }
 }
