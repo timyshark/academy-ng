@@ -8,5 +8,17 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        sh 'ng build'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        echo 'Deploying started'
+      }
+    }
+
   }
 }
