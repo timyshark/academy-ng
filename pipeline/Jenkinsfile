@@ -6,6 +6,7 @@ pipeline {
         echo 'Preparation Started'
         git(url: 'https://github.com/timyshark/academy-ng', branch: 'app-alpha-001')
         bat(script: 'npm --version', label: 'Node JS Version')
+        bat(script: 'npm install', label: 'Install Packages')
       }
     }
 
