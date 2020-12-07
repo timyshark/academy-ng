@@ -12,7 +12,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        bat(script: 'C:\\Users\\habou\\AppData\\Roaming\\npm\\ng build', label: 'Building Academy Vue')
+        bat 'npm install -g @angular/cli'
+        bat(script: 'ng build', label: 'Building Academy Vue')
       }
     }
 
